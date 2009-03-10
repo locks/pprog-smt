@@ -2,5 +2,5 @@ Projecto de PPROG
 =================
 
 Elementos:  
-* 1
+* 1  
 * 2
