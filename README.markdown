@@ -9,21 +9,21 @@ objectivo da aplicação é permitir a troca de mensagens de texto entre os util
 registados no sistema. Cada utilizador deve possuir uma caixa de mensagens onde são
 guardadas as mensagens recebidas.
 A aplicação deve permitir, entre outras funcionalidades, as seguintes:  
-* Registo de utilizadores. O utilizador indica o username pretendido, e se ainda
++ Registo de utilizadores. O utilizador indica o username pretendido, e se ainda
 não está atribuído, a aplicação gera aleatoriamente uma password de 4
 caracteres.  
-* Autenticação de utilizadores através de username e password. As operações
++ Autenticação de utilizadores através de username e password. As operações
 descritas a seguir só podem ser realizadas por utilizadores autenticados.  
-* Listagem dos utilizadores do sistema.  
-* Envio de uma mensagem de um utilizador para outro utilizador, para vários
++ Listagem dos utilizadores do sistema.  
++ Envio de uma mensagem de um utilizador para outro utilizador, para vários
 utilizadores ou para todos os utilizadores do sistema.  
-* Listagem das mensagens recebidas.  
-* Leitura das mensagens recebidas.  
-* Remoção de mensagem ou mensagens recebidas.
++ Listagem das mensagens recebidas.  
++ Leitura das mensagens recebidas.  
++ Remoção de mensagem ou mensagens recebidas.
 
 __notas__
 1. O programa deve recusar informações incoerentes, impondo ao utilizador a
-devida correcção, informando-o explicitamente do problema.
+devida correcção, informando-o explicitamente do problema.  
 2. No desenvolvimento da aplicação tome especial cuidado com a utilização
 dos quatro princípios da Programação Orientada a Objectos: Abstracção,
 Encapsulamento, Herança e Polimorfismo.
