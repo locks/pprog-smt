@@ -73,19 +73,19 @@ A aplicação deve permitir a continuação da sua execução numa sessão
 diferente usando ficheiros para armazenar o estado.
 O programa deve ser entregue até às 23h59 do dia 17 de Maio de 2009.
 O Relatório Final correspondente à 2.ª parte deve conter:  
-* Identificação (do autor ou autores).  
-* Objectivo (do trabalho).  
-* Estrutura do programa: divisão em módulos e inter-relações entre os diversos
++ Identificação (do autor ou autores).  
++ Objectivo (do trabalho).  
++ Estrutura do programa: divisão em módulos e inter-relações entre os diversos
 módulos que constituem o programa; descrição resumida das classes e
 serviços que a classe realiza para os seus clientes e justificação da escolha da
 estrutura e serviços.  
-* Ambiente de desenvolvimento: máquina, sistema operativo e compilador.  
-* Resultados da execução do programa: sequência de saídas produzidas numa
++ Ambiente de desenvolvimento: máquina, sistema operativo e compilador.  
++ Resultados da execução do programa: sequência de saídas produzidas numa
 sessão de utilização do programa.  
-* Conclusões.  
-* Melhoramentos (opcional): que funcionalidades adicionais deveria ter ou
++ Conclusões.  
++ Melhoramentos (opcional): que funcionalidades adicionais deveria ter ou
 como poderia aumentar a eficiência do programa.  
-* Manual do utilizador: Funcionalidades (conjunto de tarefas) que o programa
++ Manual do utilizador: Funcionalidades (conjunto de tarefas) que o programa
 disponibiliza, sequência correcta de operações para utilizar o programa para
 todas as funcionalidades disponibilizadas, justificação de erros que o
 programa possa informar o utilizador.
