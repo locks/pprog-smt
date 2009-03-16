@@ -21,7 +21,7 @@ utilizadores ou para todos os utilizadores do sistema.
 + Leitura das mensagens recebidas.  
 + Remoção de mensagem ou mensagens recebidas.
 
-__notas__
+__notas__  
 1. O programa deve recusar informações incoerentes, impondo ao utilizador a
 devida correcção, informando-o explicitamente do problema.  
 2. No desenvolvimento da aplicação tome especial cuidado com a utilização
