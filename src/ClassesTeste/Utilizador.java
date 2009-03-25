@@ -9,6 +9,13 @@ public class Utilizador {
     String password;
 
     /**
+     * 
+     */
+    public Utilizador() {
+        nome = "";
+        password = "";
+    }
+    /**
      *
      * @param nome
      * @param password
