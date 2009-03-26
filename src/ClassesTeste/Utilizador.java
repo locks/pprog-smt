@@ -15,6 +15,7 @@ public class Utilizador {
         nome = "";
         password = "";
     }
+    
     /**
      *
      * @param nome
@@ -39,5 +40,13 @@ public class Utilizador {
      */
     public String getPassword() {
         return password;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public static String gerarPassword() {
+        return "";
     }
 }
