@@ -93,5 +93,5 @@ disponibiliza, sequência correcta de operações para utilizar o programa para
 todas as funcionalidades disponibilizadas, justificação de erros que o
 programa possa informar o utilizador.
 
-A Apresentação será efectuada na última semana de actividades lectivas do 2.º
+A apresentação será efectuada na última semana de actividades lectivas do 2.º
 Semestre, em data a combinar com o professor da turma prática.
