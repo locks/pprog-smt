@@ -33,8 +33,7 @@ Encapsulamento, Herança e Polimorfismo.
 B. Entrega
 ----------
 
-Este trabalho deve ser efectuado individualmente ou em grupo (máximo 2 alunos) e
-entregue através do Moodle em duas fases:
+Entregue através do Moodle em duas fases:
 
 1. A 1.ª parte consistindo numa aplicação com interface em modo de texto, sem
 ficheiros para guardar dados. Sempre que a aplicação é inicializada é necessário
