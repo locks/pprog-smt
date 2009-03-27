@@ -34,8 +34,9 @@ B. Entrega
 ----------
 
 Este trabalho deve ser efectuado individualmente ou em grupo (máximo 2 alunos) e
-entregue através do Moodle em duas fases:  
-􀂃 A 1.ª parte consistindo numa aplicação com interface em modo de texto, sem
+entregue através do Moodle em duas fases:
+
+1. A 1.ª parte consistindo numa aplicação com interface em modo de texto, sem
 ficheiros para guardar dados. Sempre que a aplicação é inicializada é necessário
 criar utilizadores. Quando termina perdem-se todos os dados.
 
@@ -49,7 +50,7 @@ O programa, acompanhado por um pequeno relatório destinado a facilitar a
 compreensão da solução apresentada, deve ser entregue até às 23h59m do dia 4
 de Abril de 2009.
 
-􀂃 A 2.ª parte deverá ser constituída por uma qualquer das seguintes alternativas:
+2. A 2.ª parte deverá ser constituída por uma qualquer das seguintes alternativas:
 
 a) Duas versões da aplicação correspondentes a dois modos de interacção com
 o utilizador: modo de texto e modo gráfico.
