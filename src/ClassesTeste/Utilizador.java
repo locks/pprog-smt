@@ -5,6 +5,7 @@ package ClassesTeste;
  * @author i060516
  */
 public class Utilizador {
+    static final String cadeia = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     String nome;
     String password;
 

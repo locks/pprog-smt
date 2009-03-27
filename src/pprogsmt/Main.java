@@ -2,11 +2,12 @@ package pprogsmt;
 
 import java.sql.*;
 import ClassesTeste.*;
+import java.util.Random;
 
 public class Main {
 
     /**
-     * 
+     *
      * @param args
      * @throws java.lang.Exception
      */
