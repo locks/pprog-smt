@@ -5,6 +5,11 @@ import ClassesTeste.*;
 
 public class Main {
 
+    /**
+     * 
+     * @param args
+     * @throws java.lang.Exception
+     */
     public static void main(final String[] args) throws Exception {
         Utilizador utilizador = new Utilizador("joao", "1234lol");
 
