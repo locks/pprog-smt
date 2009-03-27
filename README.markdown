@@ -22,7 +22,8 @@ utilizadores ou para todos os utilizadores do sistema.
 + Leitura das mensagens recebidas.  
 + Remoção de mensagem ou mensagens recebidas.
 
-__notas__  
+__notas__
+
 1. O programa deve recusar informações incoerentes, impondo ao utilizador a
 devida correcção, informando-o explicitamente do problema.  
 2. No desenvolvimento da aplicação tome especial cuidado com a utilização
@@ -73,7 +74,8 @@ sockets.
 A aplicação deve permitir a continuação da sua execução numa sessão
 diferente usando ficheiros para armazenar o estado.
 O programa deve ser entregue até às 23h59 do dia 17 de Maio de 2009.
-O Relatório Final correspondente à 2.ª parte deve conter:  
+O Relatório Final correspondente à 2.ª parte deve conter:
+
 + Identificação (do autor ou autores).  
 + Objectivo (do trabalho).  
 + Estrutura do programa: divisão em módulos e inter-relações entre os diversos
