@@ -8,10 +8,11 @@ Construa uma aplicação de gestão de um Sistema de Mensagens de Texto. O
 objectivo da aplicação é permitir a troca de mensagens de texto entre os utilizadores
 registados no sistema. Cada utilizador deve possuir uma caixa de mensagens onde são
 guardadas as mensagens recebidas.
-A aplicação deve permitir, entre outras funcionalidades, as seguintes:  
+A aplicação deve permitir, entre outras funcionalidades, as seguintes:
+
 + Registo de utilizadores. O utilizador indica o username pretendido, e se ainda
 não está atribuído, a aplicação gera aleatoriamente uma password de 4
-caracteres.  
+caracteres.
 + Autenticação de utilizadores através de username e password. As operações
 descritas a seguir só podem ser realizadas por utilizadores autenticados.  
 + Listagem dos utilizadores do sistema.  
