@@ -1,21 +1,15 @@
 package ClassesTeste;
 
+import org.apache.commons.lang.RandomStringUtils;
+
 /**
  * 
  * @author i060516
  */
 public class Utilizador {
-    static final String cadeia = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     String nome;
     String password;
-
-    /**
-     * 
-     */
-    public Utilizador() {
-        nome = "";
-        password = "";
-    }
+    CaixaDeMensagens mensagens;
     
     /**
      *
@@ -23,8 +17,12 @@ public class Utilizador {
      * @param password
      */
     public Utilizador(String nome, String password) {
-        this.nome     = nome;
-        this.password = password;
+        this.nome = nome;
+        
+        if (password.isEmpty())
+            this.password = gerarPassword();
+        else
+            this.password = password;
     }
 
     /**
@@ -48,6 +46,6 @@ public class Utilizador {
      * @return
      */
     public static String gerarPassword() {
-        return "";
+        return RandomStringUtils.randomAlphanumeric(4);
     }
 }
