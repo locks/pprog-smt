@@ -7,12 +7,23 @@ import org.apache.commons.lang.RandomStringUtils;
  * @author i060516
  */
 public class Utilizador {
-    String nome;
-    String password;
-    CaixaDeMensagens mensagens;
-    
+    private String nome;
+    private String password;
+    private CaixaDeMensagens mensagens;
+    private boolean status;
+
     /**
      *
+     */
+    public Utilizador() {
+        nome      = "<not-specified>";
+        password  = gerarPassword();
+        mensagens = new CaixaDeMensagens();
+        status    = false;
+    }
+    
+    /**
+     * Cria um objecto com os parâmetros recebidos
      * @param nome
      * @param password
      */
@@ -42,10 +53,32 @@ public class Utilizador {
     }
 
     /**
-     * 
+     *
+     * @return
+     */
+    public boolean getStatus() {
+        return status;
+    }
+
+    /**
+     * Gerar uma password aleatoriamente.
      * @return
      */
     public static String gerarPassword() {
         return RandomStringUtils.randomAlphanumeric(4);
+    }
+
+    /**
+     * 
+     * @param nome
+     * @param password
+     * @return
+     */
+    public boolean validarCredenciais(String nome, String password) {
+        if (nome.equals(this.nome))
+            if (password.equals(password))
+                return true;
+
+        return false;
     }
 }

@@ -8,23 +8,55 @@ import java.util.ArrayList;
  */
 public class Sistema {
     private ArrayList<Utilizador> utilizadores;
-    
+
+    /**
+     *
+     */
     public Sistema() {
-        utilizadores = new ArrayList();
+        utilizadores = new ArrayList<Utilizador>();
     }
 
+    /**
+     * Adiciona uma nova conta utilizador.
+     * @param nome
+     * @param password
+     */
     public void criarConta(String nome, String password) {
         utilizadores.add(new Utilizador(nome, password));
     }
 
-    public void destruirConta() {
+    /**
+     *
+     * @param i
+     */
+    public void destruirConta(int i) {
+        utilizadores.remove(i);
     }
 
+    /**
+     *
+     * @param i
+     * @return
+     */
     public Utilizador getUtilizador(int i) {
         return utilizadores.get(i);
     }
+
+    /**
+     *
+     * @return
+     */
     public int getSize() {
         return utilizadores.size();
     }
-    public void validarCredenciais(){}
+
+    /**
+     *
+     * @param i
+     * @param nome
+     * @param password
+     */
+    public void validarUtilizador(int i, String nome, String password) {
+        getUtilizador(i).validarCredenciais(nome, password);
+    }
 }

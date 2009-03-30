@@ -42,5 +42,8 @@ public class Main {
         rs.close();
         conn.close();
 
+        String lol = "lol";
+        lol.charAt(2);
+
     }
 }

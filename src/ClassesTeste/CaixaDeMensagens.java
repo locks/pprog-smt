@@ -5,10 +5,19 @@
 
 package ClassesTeste;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author i060516
  */
 public class CaixaDeMensagens {
-    Mensagem[] mensagens;
+    private ArrayList<Mensagem> mensagens;
+
+    /**
+     *
+     */
+    public CaixaDeMensagens() {
+        mensagens = new ArrayList<Mensagem>();
+    }
 }
