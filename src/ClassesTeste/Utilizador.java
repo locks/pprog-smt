@@ -19,7 +19,7 @@ public class Utilizador {
     public Utilizador(String nome, String password) {
         this.nome = nome;
         
-        if (password.isEmpty())
+        if (password.equals(""))
             this.password = gerarPassword();
         else
             this.password = password;
