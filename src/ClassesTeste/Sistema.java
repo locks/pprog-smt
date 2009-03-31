@@ -28,5 +28,4 @@ public class Sistema {
     }
     public void validarCredenciais() {}
 
-    // teste
 }
