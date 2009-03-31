@@ -26,5 +26,7 @@ public class Sistema {
     public int getSize() {
         return utilizadores.size();
     }
-    public void validarCredenciais(){}
+    public void validarCredenciais() {}
+
+    // teste
 }
