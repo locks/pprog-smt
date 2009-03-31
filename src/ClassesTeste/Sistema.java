@@ -47,12 +47,9 @@ public class Sistema {
     }
     
     public int validarCredenciais(String nome, String password) {
-        for (int i=0; i<utilizadores.size(); i++) {
+        for (int i=0; i<utilizadores.size(); i++)
             if (utilizadores.get(i).getNome().equals(nome) && utilizadores.get(i).getPassword().equals(password))
                 return i;
-            else
-                break;
-        }
 
         return -1;
     }

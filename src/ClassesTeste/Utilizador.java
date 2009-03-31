@@ -17,10 +17,16 @@ public class Utilizador {
      * @param password
      */
     public Utilizador(String nome, String password) {
-        this.nome = nome;
-        
-        if (password.equals(""))
-            this.password = gerarPassword();
+        setNome(nome);
+        setPassword(password);
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome.trim();
+    }
+    public void setPassword(String password) {
+        if (password.trim().equals(""))
+                this.password = gerarPassword();
         else
             this.password = password;
     }

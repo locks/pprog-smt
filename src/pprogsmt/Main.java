@@ -17,7 +17,7 @@ public class Main {
         sistema.criarConta("Tiago","");
         sistema.criarConta("teste", "teste");
 
-        InterfaceTexto.loginUtilizador(sistema);
+        InterfaceTexto.ecraInicial(sistema);
 
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection("jdbc:sqlite:test.db");
@@ -44,6 +44,5 @@ public class Main {
         }
         rs.close();
         conn.close();
-
     }
 }
