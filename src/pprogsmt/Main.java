@@ -12,7 +12,8 @@ public class Main {
      */
     public static void main(final String[] args) throws Exception {
         Sistema sistema = new Sistema();
-        sistema.criarConta("Joao","1234lol");
+
+        sistema.criarConta("Joao","");
         sistema.criarConta("Tiago","");
         sistema.criarConta("Ricardo", "lolol");
 
