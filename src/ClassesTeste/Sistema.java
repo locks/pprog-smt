@@ -10,7 +10,7 @@ public class Sistema {
     private ArrayList<Utilizador> utilizadores;
     
     public Sistema() {
-        utilizadores = new ArrayList();
+        utilizadores = new ArrayList<Utilizador>();
     }
 
     public void criarConta(String nome, String password) {
@@ -27,5 +27,4 @@ public class Sistema {
         return utilizadores.size();
     }
     public void validarCredenciais() {}
-
 }
