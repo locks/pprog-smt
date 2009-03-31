@@ -15,7 +15,9 @@ public class Main {
 
         sistema.criarConta("Joao","");
         sistema.criarConta("Tiago","");
-        sistema.criarConta("Ricardo", "lolol");
+        sistema.criarConta("teste", "teste");
+
+        InterfaceTexto.loginUtilizador(sistema);
 
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection("jdbc:sqlite:test.db");
