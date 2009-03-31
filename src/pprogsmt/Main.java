@@ -1,7 +1,6 @@
 package pprogsmt;
 
 import java.sql.*;
-import ClassesTeste.*;
 
 public class Main {
 
@@ -12,12 +11,10 @@ public class Main {
      */
     public static void main(final String[] args) throws Exception {
         InterfaceTexto sistema = new InterfaceTexto();
-        
+
+        sistema.ecraInicial();
         // teste
-        sistema.criarConta("Joao","");
-        sistema.criarConta("Tiago","");
-        sistema.criarConta("teste", "teste");
-        // teste
+
 //        Class.forName("org.sqlite.JDBC");
 //        Connection conn = DriverManager.getConnection("jdbc:sqlite:test.db");
 //
