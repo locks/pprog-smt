@@ -1,10 +1,10 @@
 package ClassesTeste;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Mensagem {
     private Utilizador   from;
-    private ArrayList<Utilizador> to;
+    private Vector<Utilizador> to;
     private String       subject, body;
 
     public Mensagem() {
@@ -14,7 +14,7 @@ public class Mensagem {
         body    = null;
     }
 
-    public Mensagem(Utilizador from, ArrayList<Utilizador> to, String subject, String body) {
+    public Mensagem(Utilizador from, Vector<Utilizador> to, String subject, String body) {
         this.from    = from;
         this.to      = to;
         this.subject = subject;

@@ -1,12 +1,12 @@
 package ClassesTeste;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Sistema {
-    private ArrayList<Utilizador> utilizadores;
+    private Vector<Utilizador> utilizadores;
 
     public Sistema() {
-        utilizadores = new ArrayList<Utilizador>();
+        utilizadores = new Vector<Utilizador>();
     }
 
     public void criarConta(String nome) {
