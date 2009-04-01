@@ -36,7 +36,7 @@ public class Sistema {
 
    public Utilizador validarCredenciais(String nome, String password) {
        for (Utilizador utilizador : utilizadores)
-           if (utilizador.getNome().equals(nome) && utilizador.getPassword().equals(password))
+           if (utilizador.validarUtilizador(nome, password))
                return utilizador;
        return null;
    }

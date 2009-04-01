@@ -46,7 +46,7 @@ public class Utilizador {
         return password;
     }
 
-    public boolean validarCredenciais(String nome, String password) {
+    public boolean validarUtilizador(String nome, String password) {
         if (nome.equals(this.nome) && password.equals(this.password))
             return true;
 
