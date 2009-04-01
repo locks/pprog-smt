@@ -7,26 +7,22 @@ public class Utilizador {
     private String nome;
     private String password;
     private CaixaDeMensagens mensagens;
-    private boolean status;
 
     public Utilizador() {
         nome      = null;
         setPassword();
         mensagens = new CaixaDeMensagens();
-        status    = false;
     }
     
-    public Utilizador(String nome) {
-        try {
-            setNome(nome);
-        } catch (ValorInvalido e) {
-            e.printStackTrace();
-        }
+    public Utilizador(String nome) throws ValorInvalido {
+        setNome(nome);
         setPassword();
+        mensagens = new CaixaDeMensagens();
     }
 
     public void setNome(String nome) throws ValorInvalido {
-        if (nome.length()==0) throw new ValorInvalido("nome");
+        if (nome.length()==0)
+            throw new ValorInvalido("nome");
         else
             this.nome = nome;
     }
@@ -35,11 +31,11 @@ public class Utilizador {
         this.password = RandomStringUtils.randomAlphanumeric(4);
     }
 
-    public boolean setPassword(String password) {
+    public void setPassword(String password) throws ValorInvalido {
         if (password.length()==0)
-            return false;
+            throw new ValorInvalido("password");
         else
-            return true;
+            this.password = password;
     }
 
      public String getNome() {
@@ -48,10 +44,6 @@ public class Utilizador {
 
     public String getPassword() {
         return password;
-    }
-
-    public boolean getStatus() {
-        return status;
     }
 
     public boolean validarCredenciais(String nome, String password) {

@@ -1,23 +1,20 @@
 package pprogsmt;
 
-import ClassesTeste.Sistema;
+import ClassesTeste.*;
 import java.util.Scanner;
 
 public class InterfaceTexto extends Sistema {
-
     private static Scanner input;
-    private int indice;
+    private Utilizador utilizadorSessao;
 
     public InterfaceTexto() {
         super();
         input = new Scanner(System.in);
-
-        //conta teste
-        super.criarConta("teste");
     }
 
     public void ecraInicial() {
         int opcao=0;
+
         System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
         System.out.println("1 - Criar conta\n2 - Login\n3 - Sair.\n");
         System.out.print("Opcao: ");
@@ -49,16 +46,14 @@ public class InterfaceTexto extends Sistema {
     }
 
     public void criarConta() {
-        boolean flag = false;
         System.out.print("Introduza o nome desejado: ");
         
         String nome = input.nextLine().trim();
 
-        if (super.existeUtilizador(nome))
+        if (super.existeNomeUtilizador(nome))
             System.out.println("Nome já existente.");
         else
             super.criarConta(nome);
-
     }
 
     public void loginUtilizador() {
@@ -70,12 +65,10 @@ public class InterfaceTexto extends Sistema {
         System.out.print("Password do Utilizador: ");
         String password = input.nextLine();
 
-        int i = super.validarCredenciais(nome, password);
-        if (i == -1) {
+        if (super.validarCredenciais(nome, password)==null) {
             System.out.println("credenciais invalidas.");
             loginUtilizador();
         } else {
-            indice = i;
             System.out.println("Login efectuado com sucesso.");
             sessaoAutenticada();
         }
@@ -104,32 +97,33 @@ public class InterfaceTexto extends Sistema {
         System.out.println("1 - Alterar Nome\n2 - Alterar Password");
 
         int opcao = Integer.parseInt(input.nextLine());
-        String nome = null;
-        String pass = null;
         switch (opcao){
             case 1:
-                {
-                    System.out.println("Nome Actual" + super.getUtilizador(indice).getNome());
-                    System.out.println("Escreva o Novo Nome");
-                    do{
-                    nome = input.nextLine().trim();
-                    } while(nome.equals(""));
-                    super.getUtilizador(indice).setNome(nome);
-                 }
-
-            case 2:
-                {
-                    System.out.println("Password Actual" + super.getUtilizador(indice).getPassword());
-                    System.out.println("Escreva a Nova Pasword");
-                    do {
-                        pass = input.nextLine().trim();
-                    } while (pass.equals(""));
-                    super.getUtilizador(indice).setPassword(pass);
-                }
-
+                editarNomeUtilizador();
+                break;
+             case 2:
+                editarPasswordUtilizador();
+                break;
         }
     }
 
-    public void verCaixaDeMensagens() {
+    public void editarNomeUtilizador() {
+        System.out.println("Nome Actual" + utilizadorSessao.getNome());
+        System.out.println("Escreva o Novo Nome");
+        try {
+            utilizadorSessao.setNome(input.nextLine().trim());
+        } catch (Exception e) {
+        } finally { editarNomeUtilizador(); }
     }
+    
+    public void editarPasswordUtilizador() {
+        System.out.println("Password Actual" + utilizadorSessao.getPassword());
+        System.out.println("Escreva a Nova Pasword");
+        try {
+            utilizadorSessao.setPassword(input.nextLine().trim());
+        } catch (Exception e) {
+        } finally { editarPasswordUtilizador(); }
+ }
+
+    public void verCaixaDeMensagens() {}
 }
