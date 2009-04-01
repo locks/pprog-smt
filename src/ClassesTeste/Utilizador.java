@@ -25,7 +25,7 @@ public class Utilizador {
     }
 
     public boolean setPassword(String password) {
-        if (password.isEmpty())
+        if (password.length()==0)
             return false;
         else
             return true;
