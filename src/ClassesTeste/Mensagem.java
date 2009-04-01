@@ -7,9 +7,6 @@ public class Mensagem {
     private ArrayList<Utilizador> to;
     private String       subject, body;
 
-    /**
-     *
-     */
     public Mensagem() {
         from    = new Utilizador();
         to      = new ArrayList<Utilizador>();
@@ -17,13 +14,6 @@ public class Mensagem {
         body    = "<empty>";
     }
 
-    /**
-     * 
-     * @param from
-     * @param to
-     * @param subject
-     * @param body
-     */
     public Mensagem(Utilizador from, ArrayList<Utilizador> to, String subject, String body) {
         this.from    = from;
         this.to      = to;

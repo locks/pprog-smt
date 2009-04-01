@@ -5,27 +5,28 @@ import java.util.ArrayList;
 public class Sistema {
     private ArrayList<Utilizador> utilizadores;
 
-    /**
-     *
-     */
     public Sistema() {
         utilizadores = new ArrayList<Utilizador>();
     }
 
-    public void criarConta(String nome, String password) {
-        utilizadores.add(new Utilizador(nome, password));
+    public void criarConta(String nome) {
+        utilizadores.add(new Utilizador(nome));
     }
 
     public void destruirConta(int i) {
         utilizadores.remove(i);
     }
 
-    public Utilizador getUtilizador(int i) {
-        return utilizadores.get(i);
+    public boolean existeUtilizador(String nome) {
+        for (int i=0; i<utilizadores.size(); i++)
+            if (utilizadores.get(i).getNome().equals(nome))
+                return false;
+
+        return true;
     }
 
-    public int getSize() {
-        return utilizadores.size();
+    public Utilizador getUtilizador(int i) {
+        return utilizadores.get(i);
     }
 
     public void validarUtilizador(int i, String nome, String password) {

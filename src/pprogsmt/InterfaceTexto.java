@@ -11,17 +11,23 @@ public class InterfaceTexto extends Sistema {
     public InterfaceTexto() {
         super();
         input = new Scanner(System.in);
-        System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
 
         //conta teste
-        super.criarConta("teste", "teste");
+        super.criarConta("teste");
     }
 
     public void ecraInicial() {
+        int opcao=0;
+        System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
         System.out.println("1 - Criar conta\n2 - Login\n3 - Sair.\n");
         System.out.print("Opcao: ");
-        int opcao = Integer.parseInt(input.nextLine());
+        
+        try {
+            opcao = Integer.valueOf(input.nextLine().trim());
+        } catch(Exception e) {
 
+        }
+        
         switch (opcao) {
             case 1:
                 criarConta();
@@ -43,12 +49,16 @@ public class InterfaceTexto extends Sistema {
     }
 
     public void criarConta() {
+        boolean flag = false;
         System.out.print("Introduza o nome desejado: ");
-        String nome = input.nextLine();
-        System.out.println("Introduza a password desejada: ");
-        String password = input.nextLine();
+        
+        String nome = input.nextLine().trim();
 
-        super.criarConta(nome, password);
+        if (super.existeUtilizador(nome))
+            System.out.println("Nome já existente.");
+        else
+            super.criarConta(nome);
+
     }
 
     public void loginUtilizador() {
@@ -121,9 +131,5 @@ public class InterfaceTexto extends Sistema {
     }
 
     public void verCaixaDeMensagens() {
-    }
-
-    private void editarNome() {
-
     }
 }
