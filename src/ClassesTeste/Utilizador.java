@@ -2,56 +2,56 @@ package ClassesTeste;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-/**
- * 
- * @author i060516
- */
 public class Utilizador {
-    String nome;
-    String password;
-    CaixaDeMensagens mensagens;
+    private String nome;
+    private String password;
+    private CaixaDeMensagens mensagens;
+    private boolean status;
+
+    public Utilizador() {
+        nome      = "<not-specified>";
+        setPassword();
+        mensagens = new CaixaDeMensagens();
+        status    = false;
+    }
     
-    /**
-     *
-     * @param nome
-     * @param password
-     */
-    public Utilizador(String nome, String password) {
+    public Utilizador(String nome) {
         setNome(nome);
-        setPassword(password);
+        setPassword();
     }
 
     public void setNome(String nome) {
         this.nome = nome.trim();
     }
-    public void setPassword(String password) {
-        if (password.trim().equals(""))
-                this.password = gerarPassword();
+
+    public boolean setPassword(String password) {
+        if (password.isEmpty())
+            return false;
         else
-            this.password = password;
+            return true;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getNome() {
+    public void setPassword() {
+        this.password = RandomStringUtils.randomAlphanumeric(4);
+    }
+
+     public String getNome() {
         return nome;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * 
-     * @return
-     */
-    public static String gerarPassword() {
-        return RandomStringUtils.randomAlphanumeric(4);
+    public boolean getStatus() {
+        return status;
+    }
+
+    public boolean validarCredenciais(String nome, String password) {
+        if (nome.equals(this.nome))
+            if (password.equals(password))
+                return true;
+
+        return false;
     }
 }

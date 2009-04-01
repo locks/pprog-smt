@@ -1,6 +1,6 @@
 package pprogsmt;
 
-import java.sql.*;
+//import java.sql.*;
 
 public class Main {
 
@@ -10,8 +10,8 @@ public class Main {
      * @throws java.lang.Exception
      */
     public static void main(final String[] args) throws Exception {
-        InterfaceTexto sistema = new InterfaceTexto();
 
+        InterfaceTexto sistema = new InterfaceTexto();
         sistema.ecraInicial();
         // teste
 
