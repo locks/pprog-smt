@@ -1,5 +1,6 @@
 package ClassesTeste;
 
+import AplicacaoExceptions.ValorInvalido;
 import org.apache.commons.lang.RandomStringUtils;
 
 public class Utilizador {
@@ -15,22 +16,17 @@ public class Utilizador {
         status    = false;
     }
     
-    public Utilizador(String nome) throws ValorInvalido {
-//        try {
-//            setNome(nome);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.err.println("nome");
-//        }
-
-        setNome(nome);
+    public Utilizador(String nome) {
+        try {
+            setNome(nome);
+        } catch (ValorInvalido e) {
+            e.printStackTrace();
+        }
         setPassword();
     }
 
     public void setNome(String nome) throws ValorInvalido {
-
-        if (nome.length()==0)
-            throw new ValorInvalido("nome");
+        if (nome.length()==0) throw new ValorInvalido("nome");
         else
             this.nome = nome;
     }
