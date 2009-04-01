@@ -8,10 +8,10 @@ public class Mensagem {
     private String       subject, body;
 
     public Mensagem() {
-        from    = new Utilizador();
-        to      = new ArrayList<Utilizador>();
-        subject = "<empty>";
-        body    = "<empty>";
+        from    = null;
+        to      = null;
+        subject = null;
+        body    = null;
     }
 
     public Mensagem(Utilizador from, ArrayList<Utilizador> to, String subject, String body) {

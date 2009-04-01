@@ -25,7 +25,7 @@ public class InterfaceTexto extends Sistema {
         try {
             opcao = Integer.valueOf(input.nextLine().trim());
         } catch(Exception e) {
-
+            System.err.println("Erro: " + e);
         }
         
         switch (opcao) {
