@@ -2,10 +2,6 @@ package ClassesTeste;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author i060516
- */
 public class Mensagem {
     private Utilizador   from;
     private ArrayList<Utilizador> to;
