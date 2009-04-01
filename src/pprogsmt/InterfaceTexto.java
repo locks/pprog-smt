@@ -112,8 +112,7 @@ public class InterfaceTexto extends Sistema {
         System.out.println("Escreva o Novo Nome");
         try {
             utilizadorSessao.setNome(input.nextLine().trim());
-        } catch (Exception e) {
-        } finally { editarNomeUtilizador(); }
+        } catch (Exception e) { editarNomeUtilizador(); }
     }
     
     public void editarPasswordUtilizador() {
@@ -121,8 +120,7 @@ public class InterfaceTexto extends Sistema {
         System.out.println("Escreva a Nova Pasword");
         try {
             utilizadorSessao.setPassword(input.nextLine().trim());
-        } catch (Exception e) {
-        } finally { editarPasswordUtilizador(); }
+        } catch (Exception e) { editarPasswordUtilizador(); }
  }
 
     public void verCaixaDeMensagens() {}
