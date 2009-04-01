@@ -11,7 +11,7 @@ public class Main {
      */
     public static void main(final String[] args) throws Exception {
 
-        InterfaceTexto sistema = new InterfaceTexto();
+        ModoConsola sistema = new ModoConsola();
         sistema.ecraInicial();
         // teste
 

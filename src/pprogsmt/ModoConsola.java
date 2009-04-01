@@ -3,11 +3,11 @@ package pprogsmt;
 import ClassesTeste.*;
 import java.util.Scanner;
 
-public class InterfaceTexto extends Sistema {
+public class ModoConsola extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
-    public InterfaceTexto() {
+    public ModoConsola() {
         super();
         input = new Scanner(System.in);
     }
