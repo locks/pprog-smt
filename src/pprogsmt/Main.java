@@ -11,10 +11,9 @@ public class Main {
      * @param args
      * @throws java.lang.Exception
      */
-    public static void main(final String[] args) throws Exception {
-
+    public static void main(final String[] args) throws Exception {        
         cli sistema = new cli();
-        sistema.ecraInicial();
+        sistema.menuInicial();
         // teste
 
 //        Class.forName("org.sqlite.JDBC");

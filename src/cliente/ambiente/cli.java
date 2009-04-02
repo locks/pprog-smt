@@ -14,7 +14,7 @@ public class cli extends Sistema {
         input = new Scanner(System.in);
     }
 
-    public void ecraInicial() {
+    public void menuInicial() {
         int opcao=0;
 
         System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
@@ -40,7 +40,7 @@ public class cli extends Sistema {
                 break;
             default:
                 System.out.println("Opcao invalida.");
-                ecraInicial();
+                menuInicial();
                 break;
         }
     }
@@ -50,11 +50,14 @@ public class cli extends Sistema {
         String nome = input.nextLine().trim();
 
         if (existeNomeUtilizador(nome) == null) {
-            System.out.println(nome + "já existe. Escolha outro.");
+            System.out.println(nome + " já existe, escolha outro.");
             ecraCriarConta();
         } else {
-            super.criarConta(nome);
-            ecraInicial();
+            utilizadorSessao = criarConta(nome);
+            System.out.println("conta criada.\n" +
+                    "nome: "     + utilizadorSessao.getNome() + "\n" +
+                    "password: " + utilizadorSessao.getPassword() );
+            menuInicial();
         }
     }
 
@@ -72,7 +75,7 @@ public class cli extends Sistema {
         if (utilizadorSessao==null) {
             System.out.println("credenciais invalidas.");
             utilizadorSessao = null;
-            System.out.println("Deseja Sair? (s/n)");
+            System.out.print("Deseja Sair (s/n)?");
             if (input.nextLine().equalsIgnoreCase("s"))
                 System.exit(0);
             else
@@ -89,7 +92,7 @@ public class cli extends Sistema {
 
         switch (opcao) {
             case 1:
-                editarConta();
+                menuEditarConta();
                 break;
             case 2:
                 verCaixaDeMensagens();
@@ -101,7 +104,7 @@ public class cli extends Sistema {
         }
     }
 
-    private void editarConta() {
+    private void menuEditarConta() {
         System.out.println("--EDITAR CONTA--" + "\n" +
                 "1 - Editar nome" + "\n" +
                 "2 - Editar password");
@@ -110,27 +113,29 @@ public class cli extends Sistema {
         switch (opcao){
             case 1:
                 editarNomeUtilizador();
+                sessaoAutenticada();
                 break;
              case 2:
                 editarPasswordUtilizador();
+                sessaoAutenticada();
                 break;
             default:
                 System.out.println("Opcao invalida.");
-                editarConta();
+                menuEditarConta();
                 break;
         }
     }
 
     private void editarNomeUtilizador() {
-        System.out.println("Nome Actual" + utilizadorSessao.getNome());
-        System.out.println("Escreva o nome pretendido:");
+        System.out.print("Nome actual: " + utilizadorSessao.getNome() + "\n");
+        System.out.print("Escreva o nome pretendido: ");
         try {
             utilizadorSessao.setNome(input.nextLine().trim());
         } catch (Exception e) { editarNomeUtilizador(); }
     }
     
     private void editarPasswordUtilizador() {
-        System.out.println("Password Actual" + utilizadorSessao.getPassword());
+        System.out.print("Password actual: " + utilizadorSessao.getPassword() + "\n");
         try {
             System.out.println("Escreva a password pretendida: ");
             utilizadorSessao.setPassword(input.nextLine().trim());

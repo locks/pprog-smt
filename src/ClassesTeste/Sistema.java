@@ -8,14 +8,20 @@ public class Sistema {
 
     public Sistema() {
         utilizadores = new Vector<Utilizador>();
+
+//        conta de teste
+//        criarConta("ricardo");
+//        System.out.println(utilizadores.lastElement().getPassword());
     }
 
-    public void criarConta(String nome) {
+    public Utilizador criarConta(String nome) {
         try {
             utilizadores.add(new Utilizador(nome));
+            return utilizadores.lastElement();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void criarConta(Utilizador utilizador) {

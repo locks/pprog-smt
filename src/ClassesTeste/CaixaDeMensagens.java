@@ -16,4 +16,11 @@ public class CaixaDeMensagens {
     public Vector<Mensagem> getMensagens() {
         return mensagens;
     }
+
+    @Override
+    public String toString() {
+        String string = "lolol\nlolol";
+        string.split("\n");
+        return "";
+    }
 }
