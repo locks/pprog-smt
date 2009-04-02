@@ -45,7 +45,7 @@ public class ModoConsola extends Sistema {
         }
     }
 
-    public void criarConta() {
+    private void criarConta() {
         System.out.print("Introduza o nome desejado: ");
         
         String nome = input.nextLine().trim();
@@ -56,7 +56,7 @@ public class ModoConsola extends Sistema {
             super.criarConta(nome);
     }
 
-    public void loginUtilizador() {
+    private void loginUtilizador() {
         input = new Scanner(System.in);
 
         System.out.println("--LOGIN--");
@@ -74,7 +74,7 @@ public class ModoConsola extends Sistema {
         }
     }
 
-    public void sessaoAutenticada() {
+    private void sessaoAutenticada() {
         System.out.println("1 - Editar conta\n2 - Ver caixa de mensagens");
         int opcao = Integer.parseInt(input.nextLine());
 
@@ -93,7 +93,7 @@ public class ModoConsola extends Sistema {
         }
     }
 
-    public void editarConta() {
+    private void editarConta() {
         System.out.println("1 - Alterar Nome\n2 - Alterar Password");
 
         int opcao = Integer.parseInt(input.nextLine());
@@ -107,7 +107,7 @@ public class ModoConsola extends Sistema {
         }
     }
 
-    public void editarNomeUtilizador() {
+    private void editarNomeUtilizador() {
         System.out.println("Nome Actual" + utilizadorSessao.getNome());
         System.out.println("Escreva o Novo Nome");
         try {
@@ -115,7 +115,7 @@ public class ModoConsola extends Sistema {
         } catch (Exception e) { editarNomeUtilizador(); }
     }
     
-    public void editarPasswordUtilizador() {
+    private void editarPasswordUtilizador() {
         System.out.println("Password Actual" + utilizadorSessao.getPassword());
         System.out.println("Escreva a Nova Pasword");
         try {
@@ -123,5 +123,5 @@ public class ModoConsola extends Sistema {
         } catch (Exception e) { editarPasswordUtilizador(); }
  }
 
-    public void verCaixaDeMensagens() {}
+    private void verCaixaDeMensagens() {}
 }
