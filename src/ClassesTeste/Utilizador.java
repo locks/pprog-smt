@@ -1,6 +1,6 @@
 package ClassesTeste;
 
-import AplicacaoExceptions.ValorInvalido;
+import aplicacaoexceptions.ValorInvalido;
 import org.apache.commons.lang.RandomStringUtils;
 
 public class Utilizador {
