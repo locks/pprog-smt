@@ -32,16 +32,14 @@ public class ModoConsola extends Sistema {
             case 2:
                 loginUtilizador();
                 break;
-            case 3: {
+            case 3:
                 System.out.println("A sair...");
                 System.exit(0);
                 break;
-            }
-            default: {
+            default:
                 System.out.println("Opcao invalida.");
                 ecraInicial();
                 break;
-            }
         }
     }
 
@@ -69,13 +67,13 @@ public class ModoConsola extends Sistema {
             System.out.println("credenciais invalidas.");
             loginUtilizador();
         } else {
-            System.out.println("Login efectuado com sucesso.");
+            System.out.println("Login efectuado com sucesso.\n");
             sessaoAutenticada();
         }
     }
 
     private void sessaoAutenticada() {
-        System.out.println("1 - Editar conta\n2 - Ver caixa de mensagens");
+        System.out.println("1 - Editar conta\n2 - Caixa de mensagens");
         int opcao = Integer.parseInt(input.nextLine());
 
         switch (opcao) {
@@ -85,16 +83,17 @@ public class ModoConsola extends Sistema {
             case 2:
                 verCaixaDeMensagens();
                 break;
-            default: {
+            default:
                 System.out.println("Opcao invalida.");
                 sessaoAutenticada();
                 break;
-            }
         }
     }
 
     private void editarConta() {
-        System.out.println("1 - Alterar Nome\n2 - Alterar Password");
+        System.out.println("--EDITAR CONTA--" + "\n" +
+                "1 - Editar nome" + "\n" +
+                "2 - Editar password");
 
         int opcao = Integer.parseInt(input.nextLine());
         switch (opcao){
@@ -104,12 +103,16 @@ public class ModoConsola extends Sistema {
              case 2:
                 editarPasswordUtilizador();
                 break;
+            default:
+                System.out.println("Opcao invalida.");
+                editarConta();
+                break;
         }
     }
 
     private void editarNomeUtilizador() {
         System.out.println("Nome Actual" + utilizadorSessao.getNome());
-        System.out.println("Escreva o Novo Nome");
+        System.out.println("Escreva o nome pretendido:");
         try {
             utilizadorSessao.setNome(input.nextLine().trim());
         } catch (Exception e) { editarNomeUtilizador(); }
@@ -117,11 +120,33 @@ public class ModoConsola extends Sistema {
     
     private void editarPasswordUtilizador() {
         System.out.println("Password Actual" + utilizadorSessao.getPassword());
-        System.out.println("Escreva a Nova Pasword");
+        System.out.println("Escreva a password pretendida:");
         try {
             utilizadorSessao.setPassword(input.nextLine().trim());
         } catch (Exception e) { editarPasswordUtilizador(); }
  }
 
-    private void verCaixaDeMensagens() {}
+    private void verCaixaDeMensagens() {
+        System.out.println("--CAIXA DE MENSAGENS--" + "\n" +
+                "1- Enviar mensagem" + "\n" +
+                "2- Ver mensagens");
+        int opcao = Integer.parseInt(input.nextLine());
+        switch (opcao) {
+            case 1:
+                enviarMensagem();
+                break;
+            case 2:
+                verMensagens();
+                break;
+            case 3:
+                break;
+            default:
+                System.out.println("Opcao invalida");
+                verCaixaDeMensagens();
+                break;
+        }
+    }
+
+    private void enviarMensagem() {}
+    private void verMensagens() {}
 }
