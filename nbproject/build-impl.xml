@@ -48,11 +48,6 @@ is divided into following sections:
                 <replacestring from="$${base}" to="${libraries.1.dir}"/>
             </filterchain>
         </loadproperties>
-        <loadproperties srcfile="${libraries.1.path}">
-            <filterchain>
-                <replacestring from="$${base}" to="${libraries.1.dir}"/>
-            </filterchain>
-        </loadproperties>
     </target>
     <target depends="-pre-init,-init-private,-init-libraries" name="-init-user">
         <property file="${user.properties.file}"/>
