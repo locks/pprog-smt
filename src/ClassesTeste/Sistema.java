@@ -3,6 +3,7 @@ package ClassesTeste;
 import java.util.Vector;
 
 public class Sistema {
+
     private Vector<Utilizador> utilizadores;
 
     public Sistema() {
@@ -17,27 +18,35 @@ public class Sistema {
         }
     }
 
+    public void criarConta(Utilizador utilizador) {
+        utilizadores.add(utilizador);
+    }
+
     public void destruirConta(Utilizador utilizador) {
         utilizadores.remove(utilizador);
     }
 
-    public boolean existeNomeUtilizador(String nome) {
+    public Utilizador existeNomeUtilizador(String nome) {
         for (Utilizador utilizador : utilizadores)
             if (utilizador.getNome().equals(nome))
-                return false;
+                return utilizador;
 
-        return true;
+        return null;
     }
 
-//    public Utilizador getUtilizador(int i) {
-//        return utilizadores.get(i);
-//    }
-    
+    public Utilizador validarCredenciais(String nome, String password) {
+        for (Utilizador utilizador : utilizadores)
+            if (utilizador.equals(nome, password))
+                return utilizador;
 
-   public Utilizador validarCredenciais(String nome, String password) {
-       for (Utilizador utilizador : utilizadores)
-           if (utilizador.equals(nome, password))
-               return utilizador;
-       return null;
-   }
+        return null;
+    }
+
+    public void enviarMensagem(Utilizador to, Utilizador from, String subject, String body) {
+        for (Utilizador utilizador : utilizadores) {
+            if (utilizador.equals(to)) {
+                utilizador.getCaixaDeMensagens().adicionarMensagem(from, subject, body);
+            }
+        }
+    }
 }

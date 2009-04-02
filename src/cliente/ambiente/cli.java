@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class cli extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
+    private Mensagem   mensagemAEnviar;
 
     public cli() {
         super();
@@ -44,14 +45,13 @@ public class cli extends Sistema {
     }
 
     private void criarConta() {
-        System.out.print("Introduza o nome desejado: ");
-        
+        System.out.print("Introduza o nome desejado: ");       
         String nome = input.nextLine().trim();
 
-        if (super.existeNomeUtilizador(nome))
-            System.out.println("Nome já existente.");
-        else
+        if (existeNomeUtilizador(nome) == null)
             super.criarConta(nome);
+        else
+            System.out.println("Nome já existente.");
     }
 
     private void loginUtilizador() {
@@ -133,7 +133,7 @@ public class cli extends Sistema {
         int opcao = Integer.parseInt(input.nextLine().trim());
         switch (opcao) {
             case 1:
-                enviarMensagem();
+                comporMensagem();
                 break;
             case 2:
                 verMensagens();
@@ -147,6 +147,21 @@ public class cli extends Sistema {
         }
     }
 
-    private void enviarMensagem() {}
+    private void comporMensagem() {
+        System.out.print("Destinatário: ");
+        Utilizador to = existeNomeUtilizador(input.nextLine().trim());
+        if (to == null ) {
+            System.out.println("Erro, Nome nao Existente!");
+            comporMensagem();
+        }
+
+        System.out.print("Assunto: ");
+        String subject = input.nextLine();
+        System.out.print("Mensagem: \n  ");
+        String body = input.nextLine();
+
+        enviarMensagem(to, utilizadorSessao, subject, body);
+    }
+
     private void verMensagens() {}
 }

@@ -40,6 +40,10 @@ public class Utilizador {
         return password;
     }
 
+    public CaixaDeMensagens getCaixaDeMensagens() {
+        return mensagens;
+    }
+
     public boolean equals(String nome, String password) {
         if (nome.equals(this.nome) && password.equals(this.password))
             return true;
