@@ -1,7 +1,7 @@
 package ClassesTeste;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class CaixaDeMensagens {
-    ArrayList<Mensagem> mensagens;
+    Vector<Mensagem> mensagens;
 }
