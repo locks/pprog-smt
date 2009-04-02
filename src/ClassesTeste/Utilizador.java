@@ -8,12 +8,6 @@ public class Utilizador {
     private String password;
     private CaixaDeMensagens mensagens;
 
-    public Utilizador() {
-        nome      = null;
-        setPassword();
-        mensagens = new CaixaDeMensagens();
-    }
-    
     public Utilizador(String nome) throws ValorInvalido {
         setNome(nome);
         setPassword();

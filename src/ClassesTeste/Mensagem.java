@@ -7,13 +7,6 @@ public class Mensagem {
     private Vector<Utilizador> to;
     private String       subject, body;
 
-    public Mensagem() {
-        from    = null;
-        to      = null;
-        subject = null;
-        body    = null;
-    }
-
     public Mensagem(Utilizador from, Vector<Utilizador> to, String subject, String body) {
         this.from    = from;
         this.to      = to;
