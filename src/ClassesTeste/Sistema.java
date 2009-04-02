@@ -43,10 +43,8 @@ public class Sistema {
     }
 
     public void enviarMensagem(Utilizador to, Utilizador from, String subject, String body) {
-        for (Utilizador utilizador : utilizadores) {
-            if (utilizador.equals(to)) {
+        for (Utilizador utilizador : utilizadores)
+            if (utilizador.equals(to))
                 utilizador.getCaixaDeMensagens().adicionarMensagem(from, subject, body);
-            }
-        }
     }
 }
