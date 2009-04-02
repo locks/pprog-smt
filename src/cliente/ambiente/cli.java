@@ -3,6 +3,7 @@ package cliente.ambiente;
 import ClassesTeste.*;
 import java.util.Scanner;
 
+
 public class cli extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
@@ -177,10 +178,10 @@ public class cli extends Sistema {
     }
 
     private void verMensagens() {
-//        Mensagem  = (utilizadorSessao.getCaixaDeMensagens().getMensagens());
-//
-//        for (int i=0; i < utilizadorSessao.getCaixaDeMensagens().getMensagens().size(); i++ ) {
-//            System.out.println("%s",utilizadorSessao.getCaixaDeMensagens().);
-//        }
+        
+
+        for (int i=0; i < utilizadorSessao.getCaixaDeMensagens().getMensagens().size(); i++ ) {
+            
+        }
     }
 }
