@@ -12,4 +12,8 @@ public class CaixaDeMensagens {
     public void adicionarMensagem(Utilizador from, String subject, String body) {
         mensagens.add(new Mensagem(from, subject, body));
     }
+
+    public Vector<Mensagem> getMensagens() {
+        return mensagens;
+    }
 }

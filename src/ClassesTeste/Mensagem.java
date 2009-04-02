@@ -10,4 +10,11 @@ public class Mensagem {
         this.body    = body;
     }
 
+    public String getNomeFrom(){
+        return from.getNome();
+    }
+
+    public String getSubject(){
+        return subject;
+    }
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class cli extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
-    private Mensagem   mensagemAEnviar;
+
 
     public cli() {
         super();
@@ -28,7 +28,7 @@ public class cli extends Sistema {
         
         switch (opcao) {
             case 1:
-                criarConta();
+                ecraCriarConta();
                 break;
             case 2:
                 loginUtilizador();
@@ -44,14 +44,17 @@ public class cli extends Sistema {
         }
     }
 
-    private void criarConta() {
+    private void ecraCriarConta() {
         System.out.print("Introduza o nome desejado: ");       
         String nome = input.nextLine().trim();
 
-        if (existeNomeUtilizador(nome) == null)
+        if (existeNomeUtilizador(nome) == null) {
+            System.out.println(nome + "já existe. Escolha outro.");
+            ecraCriarConta();
+        } else {
             super.criarConta(nome);
-        else
-            System.out.println("Nome já existente.");
+            ecraInicial();
+        }
     }
 
     private void loginUtilizador() {
@@ -63,8 +66,15 @@ public class cli extends Sistema {
         System.out.print("Password do Utilizador: ");
         String password = input.nextLine();
 
-        if (super.validarCredenciais(nome, password)==null) {
+        utilizadorSessao = validarCredenciais(nome, password);
+
+        if (utilizadorSessao==null) {
             System.out.println("credenciais invalidas.");
+            utilizadorSessao = null;
+            System.out.println("Deseja Sair? (s/n)");
+            if (input.nextLine().equalsIgnoreCase("s"))
+                System.exit(0);
+            else
             loginUtilizador();
         } else {
             System.out.println("Login efectuado com sucesso.\n");
@@ -120,9 +130,12 @@ public class cli extends Sistema {
     
     private void editarPasswordUtilizador() {
         System.out.println("Password Actual" + utilizadorSessao.getPassword());
-        System.out.println("Escreva a password pretendida:");
         try {
+            System.out.println("Escreva a password pretendida: ");
             utilizadorSessao.setPassword(input.nextLine().trim());
+            System.out.println("Repita a password pretendida: ");
+
+            if (utilizadorSessao.getPassword().equals(input.nextLine().trim()));
         } catch (Exception e) { editarPasswordUtilizador(); }
  }
 
@@ -163,5 +176,11 @@ public class cli extends Sistema {
         enviarMensagem(to, utilizadorSessao, subject, body);
     }
 
-    private void verMensagens() {}
+    private void verMensagens() {
+//        Mensagem  = (utilizadorSessao.getCaixaDeMensagens().getMensagens());
+//
+//        for (int i=0; i < utilizadorSessao.getCaixaDeMensagens().getMensagens().size(); i++ ) {
+//            System.out.println("%s",utilizadorSessao.getCaixaDeMensagens().);
+//        }
+    }
 }
