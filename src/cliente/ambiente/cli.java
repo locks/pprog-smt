@@ -1,13 +1,13 @@
-package pprogsmt;
+package cliente.ambiente;
 
 import ClassesTeste.*;
 import java.util.Scanner;
 
-public class ModoConsola extends Sistema {
+public class cli extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
-    public ModoConsola() {
+    public cli() {
         super();
         input = new Scanner(System.in);
     }

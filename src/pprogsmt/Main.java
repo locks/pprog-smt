@@ -2,6 +2,8 @@ package pprogsmt;
 
 //import java.sql.*;
 
+import cliente.ambiente.cli;
+
 public class Main {
 
     /**
@@ -11,7 +13,7 @@ public class Main {
      */
     public static void main(final String[] args) throws Exception {
 
-        ModoConsola sistema = new ModoConsola();
+        cli sistema = new cli();
         sistema.ecraInicial();
         // teste
 
