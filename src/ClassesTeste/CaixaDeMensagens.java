@@ -13,10 +13,6 @@ public class CaixaDeMensagens {
         mensagens.add(new Mensagem(from, subject, body));
     }
 
-    public Vector<Mensagem> getMensagens() {
-        return mensagens;
-    }
-
     @Override
     public String toString() {
         String string = "lolol\nlolol";
