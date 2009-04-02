@@ -1,4 +1,4 @@
-package aplicacaoexceptions;
+package aplicacaoexception;
 
 public class ValorInvalido extends Exception {
     public ValorInvalido() {
