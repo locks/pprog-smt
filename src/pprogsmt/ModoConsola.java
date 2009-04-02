@@ -130,7 +130,7 @@ public class ModoConsola extends Sistema {
         System.out.println("--CAIXA DE MENSAGENS--" + "\n" +
                 "1- Enviar mensagem" + "\n" +
                 "2- Ver mensagens");
-        int opcao = Integer.parseInt(input.nextLine());
+        int opcao = Integer.parseInt(input.nextLine().trim());
         switch (opcao) {
             case 1:
                 enviarMensagem();
