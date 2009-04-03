@@ -6,11 +6,6 @@ import cliente.ambiente.cli;
 
 public class Main {
 
-    /**
-     *
-     * @param args
-     * @throws java.lang.Exception
-     */
     public static void main(final String[] args) throws Exception {        
         cli sistema = new cli();
         sistema.menuInicial();
