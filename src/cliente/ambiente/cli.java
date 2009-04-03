@@ -8,7 +8,6 @@ public class cli extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
-
     public cli() {
         super();
         input = new Scanner(System.in);

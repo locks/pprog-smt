@@ -3,7 +3,6 @@ package ClassesTeste;
 import java.util.Vector;
 
 public class Sistema {
-
     private Vector<Utilizador> utilizadores;
 
     public Sistema() {
