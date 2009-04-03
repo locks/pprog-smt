@@ -10,6 +10,8 @@ public class Sistema {
 
 //        conta de teste
         criarConta("ricardo");
+        criarConta("joao");
+        criarConta("alberto");
         System.out.println(utilizadores.lastElement().getPassword());
     }
 
@@ -53,15 +55,15 @@ public class Sistema {
 
     @Override
     public String toString() {
-        String listagem_formatada="";
-        int indice=0;
+        String listagem_formatada="-Lista dos Utilizadores-\n";
+        int indice=1;
         
         for (Utilizador utilizador : utilizadores) {
-            listagem_formatada.concat(indice + ": " + utilizador.getNome());
+            listagem_formatada = listagem_formatada + indice + ": " + utilizador.getNome() + "\n";
             indice++;
         }
 
-        System.out.println(listagem_formatada + "LISTA!!1!!");
+        System.out.println(listagem_formatada);
         return listagem_formatada;
     }
 
