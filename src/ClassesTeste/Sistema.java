@@ -9,10 +9,10 @@ public class Sistema {
         utilizadores = new Vector<Utilizador>();
 
 //        conta de teste
-        criarConta("ricardo");
-        criarConta("joao");
-        criarConta("alberto");
-        System.out.println(utilizadores.lastElement().getPassword());
+//        criarConta("ricardo");
+//        criarConta("joao");
+//        criarConta("alberto");
+//        System.out.println(utilizadores.lastElement().getPassword());
     }
 
     public Utilizador criarConta(String nome) {
