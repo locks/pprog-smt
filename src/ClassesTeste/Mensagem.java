@@ -10,11 +10,19 @@ public class Mensagem {
         this.body    = body;
     }
 
-    public String getNomeFrom(){
+    public String getNomeFrom() {
         return from.getNome();
     }
 
-    public String getSubject(){
+    public String getSubject() {
         return subject;
+    }
+
+    public String toStringHeader() {
+        return "de: " + from + "\n" + "assunto: " + subject;
+    }
+
+    public String toStringBody() {
+        return "mensagem: " + body;
     }
 }

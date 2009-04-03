@@ -48,6 +48,10 @@ public class Sistema {
         return null;
     }
 
+    public String vercaixaDeMensagens() {
+        return "";
+    }
+
     public void enviarMensagem(Utilizador to, Utilizador from, String subject, String body) {
         for (Utilizador utilizador : utilizadores)
             if (utilizador.equals(to))

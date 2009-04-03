@@ -15,8 +15,15 @@ public class CaixaDeMensagens {
 
     @Override
     public String toString() {
-        String string = "lolol\nlolol";
-        string.split("\n");
-        return "";
+        String mensagensAcumuladas = "";
+        
+        for (Mensagem mensagem : mensagens)
+            mensagensAcumuladas.concat(mensagem.toStringHeader() + "\n");
+
+        return mensagensAcumuladas;
+    }
+
+    public String verMensagem(int i) {
+        return mensagens.get(i).toStringHeader() + "\n" + mensagens.get(i).toStringBody();
     }
 }

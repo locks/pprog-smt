@@ -183,10 +183,8 @@ public class cli extends Sistema {
     }
 
     private void verMensagens() {
-        
-
-        for (int i=0; i < utilizadorSessao.getCaixaDeMensagens().getMensagens().size(); i++ ) {
-            
-        }
+        System.out.println("--cAIXA DE MENSAGENS--\n");
+        super.vercaixaDeMensagens();
+        System.out.println(utilizadorSessao.getCaixaDeMensagens().toString());
     }
 }
