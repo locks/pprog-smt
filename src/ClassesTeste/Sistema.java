@@ -2,9 +2,16 @@ package ClassesTeste;
 
 import java.util.Vector;
 
+/**
+ * blabla
+ * @author locks
+ */
 public class Sistema {
     private Vector<Utilizador> utilizadores;
 
+    /**
+     * blabla
+     */
     public Sistema() {
         utilizadores = new Vector<Utilizador>();
 

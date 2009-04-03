@@ -3,8 +3,8 @@ package cliente.ambiente;
 import ClassesTeste.*;
 import java.util.Scanner;
 
-
 public class cli extends Sistema {
+
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
@@ -14,18 +14,18 @@ public class cli extends Sistema {
     }
 
     public void menuInicial() {
-        int opcao=0;
+        int opcao = 0;
 
         System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
         System.out.println("1 - Criar conta\n2 - Login\n3 - Sair.\n");
         System.out.print("Opcao: ");
-        
+
         try {
             opcao = Integer.valueOf(input.nextLine().trim());
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.err.println("Erro: " + e);
         }
-        
+
         switch (opcao) {
             case 1:
                 ecraCriarConta();
@@ -45,18 +45,18 @@ public class cli extends Sistema {
     }
 
     private void ecraCriarConta() {
-        System.out.print("Introduza o nome desejado: ");       
+        System.out.print("Introduza o nome desejado: ");
         String nome = input.nextLine().trim();
 
         if (existeNomeUtilizador(nome) == null) {
-            System.out.println(nome + " já existe, escolha outro.");
-            ecraCriarConta();
-        } else {
             utilizadorSessao = criarConta(nome);
             System.out.println("conta criada.\n" +
-                    "nome: "     + utilizadorSessao.getNome() + "\n" +
-                    "password: " + utilizadorSessao.getPassword() );
+                    "nome: " + utilizadorSessao.getNome() + "\n" +
+                    "password: " + utilizadorSessao.getPassword());
             menuInicial();
+        } else {
+            System.out.println(nome + " já existe, escolha outro.");
+            ecraCriarConta();
         }
     }
 
@@ -71,14 +71,15 @@ public class cli extends Sistema {
 
         utilizadorSessao = validarCredenciais(nome, password);
 
-        if (utilizadorSessao==null) {
+        if (utilizadorSessao == null) {
             System.out.println("credenciais invalidas.");
             utilizadorSessao = null;
             System.out.print("Deseja Sair (s/n)?");
-            if (input.nextLine().equalsIgnoreCase("s"))
+            if (input.nextLine().equalsIgnoreCase("s")) {
                 System.exit(0);
-            else
-            loginUtilizador();
+            } else {
+                loginUtilizador();
+            }
         } else {
             System.out.println("Login efectuado com sucesso.\n");
             sessaoAutenticada();
@@ -116,12 +117,12 @@ public class cli extends Sistema {
                 "2 - Editar password");
 
         int opcao = Integer.parseInt(input.nextLine());
-        switch (opcao){
+        switch (opcao) {
             case 1:
                 editarNomeUtilizador();
                 sessaoAutenticada();
                 break;
-             case 2:
+            case 2:
                 editarPasswordUtilizador();
                 sessaoAutenticada();
                 break;
@@ -137,9 +138,11 @@ public class cli extends Sistema {
         System.out.print("Escreva o nome pretendido: ");
         try {
             utilizadorSessao.setNome(input.nextLine().trim());
-        } catch (Exception e) { editarNomeUtilizador(); }
+        } catch (Exception e) {
+            editarNomeUtilizador();
+        }
     }
-    
+
     private void editarPasswordUtilizador() {
         System.out.print("Password actual: " + utilizadorSessao.getPassword() + "\n");
         try {
@@ -148,8 +151,10 @@ public class cli extends Sistema {
             System.out.println("Repita a password pretendida: ");
 
             if (utilizadorSessao.getPassword().equals(input.nextLine().trim()));
-        } catch (Exception e) { editarPasswordUtilizador(); }
- }
+        } catch (Exception e) {
+            editarPasswordUtilizador();
+        }
+    }
 
     private void menuCaixaDeMensagens() {
         System.out.println("--CAIXA DE MENSAGENS--" + "\n" +
@@ -175,7 +180,7 @@ public class cli extends Sistema {
     private void comporMensagem() {
         System.out.print("Destinatário: ");
         Utilizador to = existeNomeUtilizador(input.nextLine().trim());
-        if (to == null ) {
+        if (to == null) {
             System.out.println("Erro, Nome nao Existente!");
             comporMensagem();
         }
