@@ -13,12 +13,19 @@ public class CaixaDeMensagens {
         mensagens.add(new Mensagem(from, subject, body));
     }
 
+    public void removerMensagem(int i) {
+        mensagens.remove(i);
+    }
+
     @Override
     public String toString() {
         String mensagensAcumuladas = "";
+        int indice=1;
         
-        for (Mensagem mensagem : mensagens)
-            mensagensAcumuladas.concat(mensagem.toStringHeader() + "\n");
+        for (Mensagem mensagem : mensagens) {
+            mensagensAcumuladas.concat(indice + ": " + mensagem.toStringHeader() + "\n");
+            indice++;
+        }
 
         return mensagensAcumuladas;
     }

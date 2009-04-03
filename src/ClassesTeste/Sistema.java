@@ -9,8 +9,8 @@ public class Sistema {
         utilizadores = new Vector<Utilizador>();
 
 //        conta de teste
-//        criarConta("ricardo");
-//        System.out.println(utilizadores.lastElement().getPassword());
+        criarConta("ricardo");
+        System.out.println(utilizadores.lastElement().getPassword());
     }
 
     public Utilizador criarConta(String nome) {
@@ -47,8 +47,22 @@ public class Sistema {
         return null;
     }
 
-    public String vercaixaDeMensagens() {
+    public String verCaixaDeMensagens() {
         return "";
+    }
+
+    @Override
+    public String toString() {
+        String listagem_formatada="";
+        int indice=0;
+        
+        for (Utilizador utilizador : utilizadores) {
+            listagem_formatada.concat(indice + ": " + utilizador.getNome());
+            indice++;
+        }
+
+        System.out.println(listagem_formatada + "LISTA!!1!!");
+        return listagem_formatada;
     }
 
     public void enviarMensagem(Utilizador to, Utilizador from, String subject, String body) {
