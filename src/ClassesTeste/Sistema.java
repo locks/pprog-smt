@@ -10,6 +10,8 @@ public class Sistema {
 
 //        conta de teste
 //        criarConta("ricardo");
+//        criarConta("joao");
+//        criarConta("alberto");
 //        System.out.println(utilizadores.lastElement().getPassword());
     }
 
@@ -47,8 +49,22 @@ public class Sistema {
         return null;
     }
 
-    public String vercaixaDeMensagens() {
+    public String verCaixaDeMensagens() {
         return "";
+    }
+
+    @Override
+    public String toString() {
+        String listagem_formatada="-Lista dos Utilizadores-\n";
+        int indice=1;
+        
+        for (Utilizador utilizador : utilizadores) {
+            listagem_formatada = listagem_formatada + indice + ": " + utilizador.getNome() + "\n";
+            indice++;
+        }
+
+        System.out.println(listagem_formatada);
+        return listagem_formatada;
     }
 
     public void enviarMensagem(Utilizador to, Utilizador from, String subject, String body) {

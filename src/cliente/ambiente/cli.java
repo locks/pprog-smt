@@ -86,7 +86,8 @@ public class cli extends Sistema {
     }
 
     private void sessaoAutenticada() {
-        System.out.println("1 - Editar conta\n2 - Caixa de mensagens");
+        System.out.println("--SISTEMA CAIXA DE MENSAGENS DE TEXTO--");
+        System.out.println("1 - Editar conta\n2 - Caixa de mensagens\n3 - Listar utilizadores\n4 - Sair");
         int opcao = Integer.parseInt(input.nextLine());
 
         switch (opcao) {
@@ -95,6 +96,12 @@ public class cli extends Sistema {
                 break;
             case 2:
                 verCaixaDeMensagens();
+                break;
+            case 3:
+                listarUtilizadores();
+                break;
+            case 4:
+                System.exit(0);
                 break;
             default:
                 System.out.println("Opcao invalida.");
@@ -144,7 +151,7 @@ public class cli extends Sistema {
         } catch (Exception e) { editarPasswordUtilizador(); }
  }
 
-    private void verCaixaDeMensagens() {
+    private void menuCaixaDeMensagens() {
         System.out.println("--CAIXA DE MENSAGENS--" + "\n" +
                 "1- Enviar mensagem" + "\n" +
                 "2- Ver mensagens");
@@ -160,7 +167,7 @@ public class cli extends Sistema {
                 break;
             default:
                 System.out.println("Opcao invalida");
-                verCaixaDeMensagens();
+                menuCaixaDeMensagens();
                 break;
         }
     }
@@ -179,11 +186,17 @@ public class cli extends Sistema {
         String body = input.nextLine();
 
         enviarMensagem(to, utilizadorSessao, subject, body);
+        menuCaixaDeMensagens();
     }
 
     private void verMensagens() {
         System.out.println("--cAIXA DE MENSAGENS--\n");
-        super.vercaixaDeMensagens();
+        super.verCaixaDeMensagens();
         System.out.println(utilizadorSessao.getCaixaDeMensagens().toString());
+    }
+
+    public void listarUtilizadores() {
+        System.out.println(super.toString());
+        sessaoAutenticada();
     }
 }
