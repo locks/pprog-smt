@@ -48,11 +48,6 @@ is divided into following sections:
                 <replacestring from="$${base}" to="${libraries.1.dir}"/>
             </filterchain>
         </loadproperties>
-        <loadproperties srcfile="${libraries.1.path}">
-            <filterchain>
-                <replacestring from="$${base}" to="${libraries.1.dir}"/>
-            </filterchain>
-        </loadproperties>
     </target>
     <target depends="-pre-init,-init-private,-init-libraries" name="-init-user">
         <property file="${user.properties.file}"/>
@@ -171,7 +166,7 @@ is divided into following sections:
             <attribute default="${includes}" name="includes"/>
             <attribute default="${excludes}" name="excludes"/>
             <attribute default="${javac.debug}" name="debug"/>
-            <attribute default="" name="sourcepath"/>
+            <attribute default="/does/not/exist" name="sourcepath"/>
             <element name="customize" optional="true"/>
             <sequential>
                 <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}">

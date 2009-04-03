@@ -1,6 +1,6 @@
 package ClassesTeste;
 
-import AplicacaoExceptions.ValorInvalido;
+import aplicacaoexception.ValorInvalido;
 import org.apache.commons.lang.RandomStringUtils;
 
 public class Utilizador {
@@ -38,6 +38,10 @@ public class Utilizador {
 
     public String getPassword() {
         return password;
+    }
+
+    public CaixaDeMensagens getCaixaDeMensagens() {
+        return mensagens;
     }
 
     public boolean equals(String nome, String password) {

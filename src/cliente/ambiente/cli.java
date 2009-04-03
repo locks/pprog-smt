@@ -3,16 +3,18 @@ package cliente.ambiente;
 import ClassesTeste.*;
 import java.util.Scanner;
 
+
 public class cli extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
+
 
     public cli() {
         super();
         input = new Scanner(System.in);
     }
 
-    public void ecraInicial() {
+    public void menuInicial() {
         int opcao=0;
 
         System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
@@ -27,7 +29,7 @@ public class cli extends Sistema {
         
         switch (opcao) {
             case 1:
-                criarConta();
+                ecraCriarConta();
                 break;
             case 2:
                 loginUtilizador();
@@ -38,20 +40,25 @@ public class cli extends Sistema {
                 break;
             default:
                 System.out.println("Opcao invalida.");
-                ecraInicial();
+                menuInicial();
                 break;
         }
     }
 
-    private void criarConta() {
-        System.out.print("Introduza o nome desejado: ");
-        
+    private void ecraCriarConta() {
+        System.out.print("Introduza o nome desejado: ");       
         String nome = input.nextLine().trim();
 
-        if (super.existeNomeUtilizador(nome))
-            System.out.println("Nome já existente.");
-        else
-            super.criarConta(nome);
+        if (existeNomeUtilizador(nome) == null) {
+            System.out.println(nome + " já existe, escolha outro.");
+            ecraCriarConta();
+        } else {
+            utilizadorSessao = criarConta(nome);
+            System.out.println("conta criada.\n" +
+                    "nome: "     + utilizadorSessao.getNome() + "\n" +
+                    "password: " + utilizadorSessao.getPassword() );
+            menuInicial();
+        }
     }
 
     private void loginUtilizador() {
@@ -63,8 +70,15 @@ public class cli extends Sistema {
         System.out.print("Password do Utilizador: ");
         String password = input.nextLine();
 
-        if (super.validarCredenciais(nome, password)==null) {
+        utilizadorSessao = validarCredenciais(nome, password);
+
+        if (utilizadorSessao==null) {
             System.out.println("credenciais invalidas.");
+            utilizadorSessao = null;
+            System.out.print("Deseja Sair (s/n)?");
+            if (input.nextLine().equalsIgnoreCase("s"))
+                System.exit(0);
+            else
             loginUtilizador();
         } else {
             System.out.println("Login efectuado com sucesso.\n");
@@ -78,7 +92,7 @@ public class cli extends Sistema {
 
         switch (opcao) {
             case 1:
-                editarConta();
+                menuEditarConta();
                 break;
             case 2:
                 verCaixaDeMensagens();
@@ -90,7 +104,7 @@ public class cli extends Sistema {
         }
     }
 
-    private void editarConta() {
+    private void menuEditarConta() {
         System.out.println("--EDITAR CONTA--" + "\n" +
                 "1 - Editar nome" + "\n" +
                 "2 - Editar password");
@@ -99,30 +113,35 @@ public class cli extends Sistema {
         switch (opcao){
             case 1:
                 editarNomeUtilizador();
+                sessaoAutenticada();
                 break;
              case 2:
                 editarPasswordUtilizador();
+                sessaoAutenticada();
                 break;
             default:
                 System.out.println("Opcao invalida.");
-                editarConta();
+                menuEditarConta();
                 break;
         }
     }
 
     private void editarNomeUtilizador() {
-        System.out.println("Nome Actual" + utilizadorSessao.getNome());
-        System.out.println("Escreva o nome pretendido:");
+        System.out.print("Nome actual: " + utilizadorSessao.getNome() + "\n");
+        System.out.print("Escreva o nome pretendido: ");
         try {
             utilizadorSessao.setNome(input.nextLine().trim());
         } catch (Exception e) { editarNomeUtilizador(); }
     }
     
     private void editarPasswordUtilizador() {
-        System.out.println("Password Actual" + utilizadorSessao.getPassword());
-        System.out.println("Escreva a password pretendida:");
+        System.out.print("Password actual: " + utilizadorSessao.getPassword() + "\n");
         try {
+            System.out.println("Escreva a password pretendida: ");
             utilizadorSessao.setPassword(input.nextLine().trim());
+            System.out.println("Repita a password pretendida: ");
+
+            if (utilizadorSessao.getPassword().equals(input.nextLine().trim()));
         } catch (Exception e) { editarPasswordUtilizador(); }
  }
 
@@ -130,10 +149,10 @@ public class cli extends Sistema {
         System.out.println("--CAIXA DE MENSAGENS--" + "\n" +
                 "1- Enviar mensagem" + "\n" +
                 "2- Ver mensagens");
-        int opcao = Integer.parseInt(input.nextLine());
+        int opcao = Integer.parseInt(input.nextLine().trim());
         switch (opcao) {
             case 1:
-                enviarMensagem();
+                comporMensagem();
                 break;
             case 2:
                 verMensagens();
@@ -147,6 +166,25 @@ public class cli extends Sistema {
         }
     }
 
-    private void enviarMensagem() {}
-    private void verMensagens() {}
+    private void comporMensagem() {
+        System.out.print("Destinatário: ");
+        Utilizador to = existeNomeUtilizador(input.nextLine().trim());
+        if (to == null ) {
+            System.out.println("Erro, Nome nao Existente!");
+            comporMensagem();
+        }
+
+        System.out.print("Assunto: ");
+        String subject = input.nextLine();
+        System.out.print("Mensagem: \n  ");
+        String body = input.nextLine();
+
+        enviarMensagem(to, utilizadorSessao, subject, body);
+    }
+
+    private void verMensagens() {
+        System.out.println("--cAIXA DE MENSAGENS--\n");
+        super.vercaixaDeMensagens();
+        System.out.println(utilizadorSessao.getCaixaDeMensagens().toString());
+    }
 }
