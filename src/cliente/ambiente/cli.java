@@ -4,7 +4,6 @@ import ClassesTeste.*;
 import java.util.Scanner;
 
 public class cli extends Sistema {
-
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
@@ -14,7 +13,7 @@ public class cli extends Sistema {
     }
 
     public void menuInicial() {
-        int opcao = 0;
+        int opcao=0;
 
         System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
         System.out.println("1 - Criar conta\n2 - Login\n3 - Sair.\n");
@@ -71,15 +70,14 @@ public class cli extends Sistema {
 
         utilizadorSessao = validarCredenciais(nome, password);
 
-        if (utilizadorSessao == null) {
+        if (utilizadorSessao==null) {
             System.out.println("credenciais invalidas.");
             utilizadorSessao = null;
             System.out.print("Deseja Sair (s/n)?");
-            if (input.nextLine().equalsIgnoreCase("s")) {
+            if (input.nextLine().equalsIgnoreCase("s"))
                 System.exit(0);
-            } else {
+            else
                 loginUtilizador();
-            }
         } else {
             System.out.println("Login efectuado com sucesso.\n");
             sessaoAutenticada();
@@ -180,7 +178,7 @@ public class cli extends Sistema {
     private void comporMensagem() {
         System.out.print("Destinatário: ");
         Utilizador to = existeNomeUtilizador(input.nextLine().trim());
-        if (to == null) {
+        if (to==null) {
             System.out.println("Erro, Nome nao Existente!");
             comporMensagem();
         }
