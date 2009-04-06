@@ -85,7 +85,7 @@ public class cli extends Sistema {
     }
 
     private void sessaoAutenticada() {
-        System.out.println("--SISTEMA CAIXA DE MENSAGENS DE TEXTO--");
+        System.out.println("--Bem-vindo " + utilizadorSessao.getNome()+ "--");
         System.out.println("1 - Editar conta\n2 - Caixa de mensagens\n3 - Listar utilizadores\n4 - Sair");
         int opcao = Integer.parseInt(input.nextLine());
 
@@ -94,7 +94,7 @@ public class cli extends Sistema {
                 menuEditarConta();
                 break;
             case 2:
-                verCaixaDeMensagens();
+                menuCaixaDeMensagens();
                 break;
             case 3:
                 listarUtilizadores();
@@ -149,9 +149,7 @@ public class cli extends Sistema {
             System.out.println("Repita a password pretendida: ");
 
             if (utilizadorSessao.getPassword().equals(input.nextLine().trim()));
-        } catch (Exception e) {
-            editarPasswordUtilizador();
-        }
+        } catch (Exception e) { editarPasswordUtilizador(); }
     }
 
     private void menuCaixaDeMensagens() {
@@ -193,8 +191,8 @@ public class cli extends Sistema {
     }
 
     private void verMensagens() {
-        System.out.println("--cAIXA DE MENSAGENS--\n");
-        super.verCaixaDeMensagens();
+        System.out.println("    CAIXA DE MENSAGENS\n");
+        super.listarMensagens();
         System.out.println(utilizadorSessao.getCaixaDeMensagens().toString());
     }
 

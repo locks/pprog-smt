@@ -49,7 +49,7 @@ public class Sistema {
         return null;
     }
 
-    public String verCaixaDeMensagens() {
+    public String listarMensagens() {
         return "";
     }
 
