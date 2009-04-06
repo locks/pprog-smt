@@ -6,7 +6,7 @@ import org.apache.commons.lang.RandomStringUtils;
 public class Utilizador {
     private String nome;
     private String password;
-    private CaixaDeMensagens mensagens;
+    protected CaixaDeMensagens mensagens;
 
     public Utilizador(String nome) throws ValorInvalido {
         setNome(nome);
@@ -40,8 +40,8 @@ public class Utilizador {
         return password;
     }
 
-    public CaixaDeMensagens getCaixaDeMensagens() {
-        return mensagens;
+    public String getCaixaDeMensagens() {
+        return mensagens.toString();
     }
 
     public boolean equals(String nome, String password) {

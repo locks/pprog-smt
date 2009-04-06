@@ -49,10 +49,6 @@ public class Sistema {
         return null;
     }
 
-    public String listarMensagens() {
-        return "";
-    }
-
     @Override
     public String toString() {
         String listagem_formatada="-Lista dos Utilizadores-\n";
@@ -70,6 +66,6 @@ public class Sistema {
     public void enviarMensagem(Utilizador to, Utilizador from, String subject, String body) {
         for (Utilizador utilizador : utilizadores)
             if (utilizador.equals(to))
-                utilizador.getCaixaDeMensagens().adicionarMensagem(from, subject, body);
+                utilizador.mensagens.adicionarMensagem(from, subject, body);
     }
 }

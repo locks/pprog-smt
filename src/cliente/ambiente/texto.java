@@ -3,11 +3,11 @@ package cliente.ambiente;
 import ClassesTeste.*;
 import java.util.Scanner;
 
-public class cli extends Sistema {
+public class texto extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
-    public cli() {
+    public texto() {
         super();
         input = new Scanner(System.in);
     }
@@ -62,7 +62,7 @@ public class cli extends Sistema {
     private void loginUtilizador() {
         input = new Scanner(System.in);
 
-        System.out.println("--LOGIN--");
+        System.out.println("--LOGIN--\n");
         System.out.print("Nome de Utilizador: ");
         String nome = input.nextLine();
         System.out.print("Password do Utilizador: ");
@@ -73,7 +73,7 @@ public class cli extends Sistema {
         if (utilizadorSessao==null) {
             System.out.println("credenciais invalidas.");
             utilizadorSessao = null;
-            System.out.print("Deseja Sair (s/n)?");
+            System.out.print("Deseja Sair (s/n)? ");
             if (input.nextLine().equalsIgnoreCase("s"))
                 System.exit(0);
             else
@@ -85,8 +85,9 @@ public class cli extends Sistema {
     }
 
     private void sessaoAutenticada() {
-        System.out.println("--Bem-vindo " + utilizadorSessao.getNome()+ "--");
+        System.out.println("--Bem-vindo " + utilizadorSessao.getNome()+ "--\n");
         System.out.println("1 - Editar conta\n2 - Caixa de mensagens\n3 - Listar utilizadores\n4 - Sair");
+        System.out.print("Opção: ");
         int opcao = Integer.parseInt(input.nextLine());
 
         switch (opcao) {
@@ -153,9 +154,10 @@ public class cli extends Sistema {
     }
 
     private void menuCaixaDeMensagens() {
-        System.out.println("--CAIXA DE MENSAGENS--" + "\n" +
+        System.out.println("--Caixa de Mensagens--" + "\n\n" +
                 "1- Enviar mensagem" + "\n" +
-                "2- Ver mensagens");
+                "2- Ver mensagens\n");
+        System.out.print("Opção: ");
         int opcao = Integer.parseInt(input.nextLine().trim());
         switch (opcao) {
             case 1:
@@ -174,26 +176,28 @@ public class cli extends Sistema {
     }
 
     private void comporMensagem() {
-        System.out.print("Destinatário: ");
-        Utilizador to = existeNomeUtilizador(input.nextLine().trim());
-        if (to==null) {
-            System.out.println("Erro, Nome nao Existente!");
-            comporMensagem();
-        }
-
+        Utilizador utilizador=null;
+        do {
+            System.out.print("Destinatário: ");
+            utilizador = existeNomeUtilizador(input.nextLine().trim());
+            
+            if (utilizador == null) {
+                System.out.println("Erro, Nome nao Existente!");
+            }
+        } while (utilizador==null);
+        
         System.out.print("Assunto: ");
         String subject = input.nextLine();
         System.out.print("Mensagem: \n  ");
         String body = input.nextLine();
 
-        enviarMensagem(to, utilizadorSessao, subject, body);
+        enviarMensagem(utilizador, utilizadorSessao, subject, body);
         menuCaixaDeMensagens();
     }
 
     private void verMensagens() {
         System.out.println("    CAIXA DE MENSAGENS\n");
-        super.listarMensagens();
-        System.out.println(utilizadorSessao.getCaixaDeMensagens().toString());
+        System.out.println(utilizadorSessao.getCaixaDeMensagens());
     }
 
     public void listarUtilizadores() {
