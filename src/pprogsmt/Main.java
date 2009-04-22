@@ -1,11 +1,11 @@
 package pprogsmt;
 
-import cliente.ambiente.cli;
+import cliente.ambiente.texto;
 
 public class Main {
 
     public static void main(final String[] args) throws Exception {        
-        cli sistema = new cli();
+        texto sistema = new texto();
         sistema.menuInicial();
     }
 }

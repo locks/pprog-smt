@@ -3,11 +3,11 @@ package cliente.ambiente;
 import ClassesTeste.*;
 import java.util.Scanner;
 
-public class cli extends Sistema {
+public class texto extends Sistema {
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
-    public cli() {
+    public texto() {
         super();
         input = new Scanner(System.in);
     }
