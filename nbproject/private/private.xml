@@ -1,3 +1,4 @@
+<<<<<<< HEAD:nbproject/private/private.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
@@ -6,3 +7,9 @@
         <file>file:/Users/locks/NetBeansProjects/pprog-smt/src/cliente/ambiente/texto.java</file>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+</project-private>
+>>>>>>> 3cc5ee29c1fbb709288189bf650813dd6b4f0175:nbproject/private/private.xml

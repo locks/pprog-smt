@@ -32,7 +32,8 @@ public class CaixaDeMensagens {
     }
 
     public String verMensagem(int i) {
-        return mensagens.get(i).toStringHeader() + "\n" + mensagens.get(i).toStringBody();
+        return mensagens.get(i).toStringHeader() + "\n" +
+                mensagens.get(i).toStringBody();
     }
     
 }
