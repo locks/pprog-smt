@@ -4,10 +4,7 @@ import ClassesTeste.*;
 import java.util.Scanner;
 
 public class texto extends Sistema {
-<<<<<<< HEAD:src/cliente/ambiente/texto.java
-    
-=======
->>>>>>> 3cc5ee29c1fbb709288189bf650813dd6b4f0175:src/cliente/ambiente/texto.java
+
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
