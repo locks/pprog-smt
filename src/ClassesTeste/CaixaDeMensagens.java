@@ -3,6 +3,7 @@ package ClassesTeste;
 import java.util.Vector;
 
 public class CaixaDeMensagens {
+    
     Vector<Mensagem> mensagens;
 
     public CaixaDeMensagens() {
@@ -33,4 +34,5 @@ public class CaixaDeMensagens {
     public String verMensagem(int i) {
         return mensagens.get(i).toStringHeader() + "\n" + mensagens.get(i).toStringBody();
     }
+    
 }

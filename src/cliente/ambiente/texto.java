@@ -4,6 +4,7 @@ import ClassesTeste.*;
 import java.util.Scanner;
 
 public class texto extends Sistema {
+    
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
@@ -202,4 +203,5 @@ public class texto extends Sistema {
         System.out.println(super.toString());
         sessaoAutenticada();
     }
+    
 }

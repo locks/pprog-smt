@@ -1,6 +1,7 @@
 package ClassesTeste;
 
 public class Mensagem {
+    
     private Utilizador from;
     private String     subject, body;
 
@@ -25,4 +26,5 @@ public class Mensagem {
     public String toStringBody() {
         return "mensagem: " + body;
     }
+    
 }

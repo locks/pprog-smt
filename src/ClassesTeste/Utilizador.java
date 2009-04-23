@@ -4,6 +4,7 @@ import aplicacaoexception.ValorInvalido;
 import org.apache.commons.lang.RandomStringUtils;
 
 public class Utilizador {
+    
     private String nome;
     private String password;
     private CaixaDeMensagens mensagens;
@@ -50,4 +51,5 @@ public class Utilizador {
 
         return false;
     }
+    
 }

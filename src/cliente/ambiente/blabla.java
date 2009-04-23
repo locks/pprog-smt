@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package cliente.ambiente;
 
 import ClassesTeste.Sistema;
@@ -13,6 +12,7 @@ import java.util.Scanner;
  * @author locks
  */
 public class blabla {
+
     private Sistema sistema;
     private static Scanner input;
 
@@ -21,8 +21,8 @@ public class blabla {
         input = new Scanner(System.in);
     }
 
-       public static void menuInicial() {
-        int opcao=0;
+    public static void menuInicial() {
+        int opcao = 0;
 
         System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
         System.out.println("1 - Criar conta\n2 - Login\n3 - Sair.\n");
@@ -59,6 +59,4 @@ public class blabla {
     private static void loginUtilizador() {
         throw new UnsupportedOperationException("Not yet implemented");
     }
-
-
 }
