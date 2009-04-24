@@ -4,6 +4,7 @@ import ClassesTeste.*;
 import java.util.Scanner;
 
 public class texto extends Sistema {
+    
     private static Scanner input;
     private Utilizador utilizadorSessao;
 
