@@ -2,18 +2,22 @@ package ClassesTeste;
 
 import java.util.Vector;
 
-public class Sistema {
+public class SistemaDeUtilizadores {
 
     private Vector<Utilizador> utilizadores;
 
-    public Sistema() {
+    public SistemaDeUtilizadores() {
         utilizadores = new Vector<Utilizador>();
 
 //        conta de teste
-//        criarConta("ricardo");
+        criarConta("ricardo");
 //        criarConta("joao");
 //        criarConta("alberto");
 //        System.out.println(utilizadores.lastElement().getPassword());
+    }
+
+    public static void inicializar(SistemaDeUtilizadores sistema) {
+        sistema = new SistemaDeUtilizadores();
     }
 
     public Utilizador criarConta(String nome) {
@@ -34,12 +38,12 @@ public class Sistema {
         utilizadores.remove(utilizador);
     }
 
-    public Utilizador existeNomeUtilizador(String nome) {
+    public boolean existeUtilizador(String nome) {
         for (Utilizador utilizador : utilizadores)
             if (utilizador.getNome().equals(nome))
-                return utilizador;
+                return true;
 
-        return null;
+        return false;
     }
 
     public Utilizador validarCredenciais(String nome, String password) {
