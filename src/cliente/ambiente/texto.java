@@ -112,12 +112,9 @@ public class texto extends SistemaDeUtilizadores {
                 break;
 
             default:
-
                 System.out.println("Opcao invalida.");
                 sessaoAutenticada();
-
                 break;
-
         }
 
 
@@ -134,25 +131,18 @@ public class texto extends SistemaDeUtilizadores {
             case 1:
                 editarNomeUtilizador();
                 sessaoAutenticada();
-
                 break;
 
             case 2:
                 editarPasswordUtilizador();
                 sessaoAutenticada();
-
                 break;
 
             default:
-
                 System.out.println("Opcao invalida.");
                 menuEditarConta();
-
                 break;
-
         }
-
-
     }
 
     private void editarNomeUtilizador() {
