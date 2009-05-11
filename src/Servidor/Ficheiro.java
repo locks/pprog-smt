@@ -5,7 +5,7 @@ import java.sql.*;
 public class Ficheiro {
 
     private Connection conn;
-    private Statement stat;
+    private Statement  stat;
 
     public Ficheiro() throws Exception {
         Class.forName("org.sqlite.JDBC");
