@@ -1,4 +1,4 @@
-package Servidor;
+package Utilitarios;
 
 import java.io.*;
 import java.net.*;
@@ -7,6 +7,7 @@ public class Comunicacao {
     
     private BufferedReader recebe;
     private BufferedWriter envia;
+    private String         comunicacao;
     private Socket         canal;
 
     public Comunicacao(Socket canal) throws Exception {
@@ -19,13 +20,28 @@ public class Comunicacao {
         this.canal = canal;
     }
 
-    public String recebe() throws IOException {
-        return recebe.readLine();
+    public String recebe() {
+        try {
+            return recebe.readLine();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return null;
+    }
+
+    public String ler() {
+         return comunicacao;
     }
     
     public void envia(String comunicacao) throws Exception {
-        envia.write(comunicacao);
-        envia.flush();
+        try {
+            envia.write(comunicacao);
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            envia.flush();
+        }
     }
 
 }

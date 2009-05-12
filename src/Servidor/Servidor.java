@@ -1,13 +1,16 @@
 package Servidor;
 
+import Utilitarios.*;
 import java.net.*;
 
 public class Servidor {
-
+    
+    private static final boolean listening = true;
     private static int   porto = 8888;
+    
     private ServerSocket portoServidor;
     private Socket       portocliente;
-    private Comunicacao  mensagem;
+    private Comunicacao  comunicacoes;
 
     public Servidor() throws Exception {
         portoServidor = new ServerSocket(porto);
@@ -17,23 +20,38 @@ public class Servidor {
         portoServidor = new ServerSocket(porto);
     }
 
-    public static void setPorto(int porto) {
-        Servidor.porto = porto;
+    public ServerSocket getPortoServidor() {
+        return portoServidor;
     }
 
     public void setPortocliente(Socket portocliente) {
         this.portocliente = portocliente;
     }
     
-    public void start() {
-        try {
-            new Servidor();
-            System.out.println("Servidor activo.");
-        } catch (Exception e) {
-            System.err.println(e);
-            System.out.println("Porta ocupada: " + porto);
+//    public void start() {
+//        try {
+//            new Servidor();
+//            System.out.println("Servidor activo.");
+//        } catch (Exception e) {
+//            System.err.println(e);
+//            System.out.println("Porta ocupada: " + porto);
+//        }
+//
+//    }
+
+    public void ligar() throws Exception {
+        portoServidor = new ServerSocket(porto);
+    }
+
+    public void aceitarcliente() throws Exception {
+                while (listening) {
+            new Servico( getPortoServidor().accept() ).start();
         }
 
+    }
+
+    public void desligar() throws Exception {
+        portoServidor.close();
     }
 
     private void Treta() throws Exception {
@@ -42,18 +60,24 @@ public class Servidor {
 
         Socket s = server.accept();
     
-        System.out.println("Servidor - Recebido: " + mensagem.recebe());
-        mensagem.envia("Olá Cliente\n");
+        System.out.println("Servidor - Recebido: " + comunicacoes.recebe());
+        comunicacoes.envia("Olá Cliente\n");
 
         s.close();
     }
 
     public static void main(String[] args) throws Exception {
+        Servidor servidor = new Servidor();
+ 
         Ficheiro ficheiro = new Ficheiro();
         ficheiro.ligar();
         ficheiro.escreverDados();
         ficheiro.lerDados();
         ficheiro.desligar();
+
+        servidor.ligar();
+        servidor.aceitarcliente();
+        servidor.desligar();
     }
 
 

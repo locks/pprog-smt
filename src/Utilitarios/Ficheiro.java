@@ -1,4 +1,4 @@
-package Servidor;
+package Utilitarios;
 
 import java.sql.*;
 
@@ -14,7 +14,7 @@ public class Ficheiro {
     public void ligar() throws Exception {
         conn = DriverManager.getConnection("jdbc:sqlite:test.db");
         stat = conn.createStatement();
-    }
+     }
 
     public void desligar() throws Exception {
         conn.close();
