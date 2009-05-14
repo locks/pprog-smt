@@ -18,7 +18,6 @@ public class Utilizador {
 
     public void setIdentificador() {
         //TODO
-        throw new UnsupportedOperationException("Not yet implemented");
     }
     
     public void setNome(String nome) throws ValorInvalido {
