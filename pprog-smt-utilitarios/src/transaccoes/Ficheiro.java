@@ -1,16 +1,11 @@
 package transaccoes;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class Ficheiro {
 
-    private Connection conn;
-    private Statement  stat;
+    private Connection conn = null;
+    private Statement  stat = null;
 
     public Ficheiro() throws Exception {
         Class.forName("org.sqlite.JDBC");
