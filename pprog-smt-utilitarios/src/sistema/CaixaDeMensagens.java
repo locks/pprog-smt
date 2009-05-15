@@ -19,18 +19,19 @@ public class CaixaDeMensagens implements Serializable {
         mensagens.remove(i);
     }
 
+
+    public String verMensagem(int i) {
+        return mensagens.get(i).toString();
+    }
+
     @Override
     public String toString() {
         String mensagensAcumuladas = "";
 
         for (Mensagem mensagem : mensagens)
-            mensagensAcumuladas.concat(mensagem.getSubject() + "\n");
+            mensagensAcumuladas += mensagem + "\n";
 
         return mensagensAcumuladas;
     }
 
-    public String verMensagem(int i) {
-        return mensagens.get(i).toString();
-    }
-    
 }

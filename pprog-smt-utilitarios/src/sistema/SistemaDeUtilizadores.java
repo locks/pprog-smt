@@ -5,46 +5,40 @@ import java.util.Vector;
 
 public class SistemaDeUtilizadores implements Serializable {
 
+    private static final String bd = "bd.dat";
     private Vector<Utilizador> utilizadores = null;
 
-    public SistemaDeUtilizadores() throws Exception {
-        utilizadores = (new File("bd.dat").exists()) ?
-            carregarSistema() : new Vector<Utilizador>();
+    public SistemaDeUtilizadores() {
+        utilizadores = carregarSistema();
     }
 
-    public Utilizador criarConta(String nome) {
-        try {
+    public String criarConta(String nome) {
+        if ( existeNome(nome) )
+            return "NOME NOME NOME já existente.";
+        else {
             utilizadores.add( new Utilizador(nome) );
-        } catch (Exception e) {
-            e.printStackTrace();
+            return utilizadores.lastElement().getPassword();
         }
-        
-        return utilizadores.lastElement();
     }
-
-    public void criarConta(Utilizador utilizador) {
-        utilizadores.add(utilizador);
-    }
-
+    
     public void destruirConta(Utilizador utilizador) {
         utilizadores.remove(utilizador);
     }
 
-    public boolean existeUtilizador(String nome) {
-        for (Utilizador utilizador : utilizadores)
-            if (utilizador.getNome().equals(nome))
+    public boolean existeNome(String nome) {
+        System.out.print("existeNome: ");
+        for ( Utilizador utilizador : utilizadores )
+            if ( utilizador.getNome().equals(nome) ) {
+                System.out.println("nop");
                 return true;
-
+            }
+        System.out.println("yep");
         return false;
     }
 
-    public Utilizador validarCredenciais(String nome, String password) {
-        for (Utilizador utilizador : utilizadores) {
-            if (utilizador.equals(nome, password))
-                return utilizador;
-        }
-
-        return null;
+    public boolean validarCredenciais(String nome, String password) throws Exception {
+        return utilizadores.contains( new Utilizador(nome, password) ) ?
+            true : false;
     }
 
     @Override
@@ -60,27 +54,35 @@ public class SistemaDeUtilizadores implements Serializable {
         return listagem += utilizadores.lastElement().getNome();
     }
 
-    public void enviarMensagem(Utilizador to, String de, String assunto, String corpo) {
+    public void enviarMensagem(String de, String para, String assunto, String corpo) {
         for (Utilizador utilizador : utilizadores)
-            if (utilizador.equals(to))
+            if ( utilizador.equals(para) )
                 utilizador.mensagens.adicionarMensagem(de, assunto, corpo);
     }
 
-    public void carregarrSistema() throws Exception {
-        if (new File("bd.dat").exists())
-            utilizadores = (Vector<Utilizador>) new ObjectInputStream(new FileInputStream("bd.dat")).readObject();
-        else {
-            new Vector<Utilizador>();
+    public String getcaixa(String nome) {
+        for (Utilizador utilizador : utilizadores)
+            if ( utilizador.equals(nome) )
+                return utilizador.getCaixaDeMensagens();
+                
+        return "";
+    }
 
+    public Vector<Utilizador> carregarSistema() {
+        if ( !new File(bd).exists() )
+            return new Vector<Utilizador>();
+
+        try {
+            return (Vector<Utilizador>) new ObjectInputStream( new FileInputStream(bd) ).readObject();
+        } catch ( Exception e ) {
+            System.err.println("Erro: " + e);
+            new File(bd).delete();
+            return new Vector<Utilizador>();
         }
     }
     
-    public Vector<Utilizador> carregarSistema() throws Exception {
-        return (Vector<Utilizador>) new ObjectInputStream(new FileInputStream("bd.dat")).readObject();
-    }
-    
     public void descarregarSistema() throws Exception {
-        new ObjectOutputStream( new FileOutputStream("bd.dat") ).writeObject( utilizadores );
+        new ObjectOutputStream( new FileOutputStream(bd) ).writeObject( utilizadores );
     }
 
 }
