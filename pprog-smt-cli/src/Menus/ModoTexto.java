@@ -50,4 +50,8 @@ public class ModoTexto {
         System.exit(0);
     }
 
+    public static void main(String[] args) {
+        menuInicial();
+    }
+
 }
