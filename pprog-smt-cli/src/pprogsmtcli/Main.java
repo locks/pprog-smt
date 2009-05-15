@@ -11,13 +11,13 @@ public class Main {
         try {
             sistema = new SistemaDeUtilizadores();
 
-            sistema.criarConta("lolinda");
+            System.out.println( sistema.criarConta("et") );
             
-            System.out.println( "caixa do joao:\n" + sistema.getcaixa("joao") );
+            System.out.println( "caixa do tiago:\n" + sistema.getcaixa("tiaguinhonhonho") );
 
         } catch ( Exception e ) { System.err.println("Falha na inicialização do sistema: " + e); System.exit(-1); }
 
-        System.out.println( "sistema: \n" + sistema.toString() + "\n:sistema" );
+        System.out.println( "--sistema\n" + sistema.toString() + "\n--sistema" );
         
         try {
             sistema.descarregarSistema();
@@ -26,8 +26,8 @@ public class Main {
 
     
     public static void Testes(SistemaDeUtilizadores sistema) {
-        sistema.criarConta("lolinda");
-        sistema.enviarMensagem("lolinda", "joao", "lol", "pode ser que sim...");
+        sistema.criarConta("ricarto");
+        sistema.enviarMensagem("lolinda", "ricardo", "lol", "pode ser que sim...");
             
    
     }

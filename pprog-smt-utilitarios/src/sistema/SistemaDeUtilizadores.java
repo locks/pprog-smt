@@ -13,10 +13,13 @@ public class SistemaDeUtilizadores implements Serializable {
     }
 
     public String criarConta(String nome) {
+        System.out.println("criar conta: ");
+        
         if ( existeNome(nome) )
             return "NOME NOME NOME já existente.";
         else {
             utilizadores.add( new Utilizador(nome) );
+            System.out.println("criado.");
             return utilizadores.lastElement().getPassword();
         }
     }
@@ -29,10 +32,10 @@ public class SistemaDeUtilizadores implements Serializable {
         System.out.print("existeNome: ");
         for ( Utilizador utilizador : utilizadores )
             if ( utilizador.getNome().equals(nome) ) {
-                System.out.println("nop");
+                System.out.println("yep");
                 return true;
             }
-        System.out.println("yep");
+        System.out.println("nop");
         return false;
     }
 
@@ -69,8 +72,10 @@ public class SistemaDeUtilizadores implements Serializable {
     }
 
     public Vector<Utilizador> carregarSistema() {
-        if ( !new File(bd).exists() )
+        if ( !new File(bd).exists() ) {
+            System.err.println("Base de dados inexistente.");
             return new Vector<Utilizador>();
+        }
 
         try {
             return (Vector<Utilizador>) new ObjectInputStream( new FileInputStream(bd) ).readObject();
@@ -82,7 +87,13 @@ public class SistemaDeUtilizadores implements Serializable {
     }
     
     public void descarregarSistema() throws Exception {
-        new ObjectOutputStream( new FileOutputStream(bd) ).writeObject( utilizadores );
+        System.out.println("--des-antes");
+
+        ObjectOutputStream ficheiro = new ObjectOutputStream( new FileOutputStream(bd) );
+        ficheiro.writeObject( utilizadores );
+        ficheiro.close();
+
+        System.out.println("--des-depois");
     }
 
 }

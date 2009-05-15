@@ -9,25 +9,19 @@ public class Utilizador implements Serializable {
     protected CaixaDeMensagens mensagens;
 
     public Utilizador(String nome) {
-        setNome(nome);
+        this.nome = nome;
         setPassword();
         mensagens = new CaixaDeMensagens();
     }
 
     public Utilizador(String nome, String password) {
-        setNome(nome);
-        setPassword(password);
+        this.nome     = nome;
+        this.password = password;
         mensagens = null;
     }
 
-    
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public void setPassword() {
-        this.password = "MERDA";
-        //RandomStringUtils.randomAlphanumeric(4);
+        this.password = RandomStringUtils.randomAlphanumeric(4);
     }
 
     public void setPassword(String password) {
