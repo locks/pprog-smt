@@ -19,7 +19,7 @@
 //        ResultSet rs = stat.executeQuery("select * from Utilizador;");
 //        while (rs.next()) {
 //            System.out.println("nome: " + rs.getString("nome"));
-//            System.out.println("password = " + rs.getString("password"));
+//            System.out.println("password: " + rs.getString("password"));
 //        }
 //        rs.close();
 //        conn.close();
