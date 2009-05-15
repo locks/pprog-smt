@@ -1,19 +1,16 @@
 package sistema;
 
-public class Mensagem {
+import java.io.Serializable;
 
-    private int    identificador, remetente;
+public class Mensagem implements Serializable {
+
+    private int    remetente;
     private String assunto, corpo;
 
     public Mensagem(int de, String assunto, String corpo) {
-        setIdentificador();
         this.remetente = de;
         this.assunto   = assunto;
         this.corpo     = corpo;
-    }
-
-    public void setIdentificador() {
-        //TODO
     }
 
     public String getSubject() {
@@ -34,8 +31,7 @@ public class Mensagem {
 
     @Override
     public String toString() {
-        return identificador +"\n"+
-                remetente    +"\n"+
+        return remetente    +"\n"+
                 assunto      +"\n"+
                 corpo;
     }

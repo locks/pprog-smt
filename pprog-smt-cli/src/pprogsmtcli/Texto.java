@@ -3,10 +3,11 @@ package pprogsmtcli;
 import sistema.*;
 import java.util.Scanner;
 
-public class Texto extends SistemaDeUtilizadores {
+public class Texto {
 
+/*
     private static Scanner input;
-    private Utilizador utilizadorSessao;
+    private Sessao sessao;
 
     public static void iniciar() {
         Texto consola = new Texto();
@@ -19,13 +20,12 @@ public class Texto extends SistemaDeUtilizadores {
     }
 
     public void menuInicial() {
-        int opcao = 0;
 
         System.out.println("    SISTEMA DE MENSAGENS DE TEXTO\n");
         System.out.println("1 - Criar conta\n2 - Login\n3 - Sair.\n");
         System.out.print("Opcao: ");
 
-        opcao = Integer.valueOf(input.nextLine().trim());
+        int opcao = Integer.valueOf( input.nextLine().trim() );
 
         switch (opcao) {
             case 1:
@@ -52,14 +52,14 @@ public class Texto extends SistemaDeUtilizadores {
             System.out.print("Introduza o nome desejado: ");
             nome = input.nextLine().trim();
 
-            if (existeUtilizador(nome))
+            if ( sessao.existeUtilizador(nome) )
                 System.out.println(nome + " já existe.");
         } while (nome!=null);
 
-        utilizadorSessao = criarConta(nome);
+        sessao = criarConta(nome);
         System.out.println("conta criada.\n" +
-                "nome: " + utilizadorSessao.getNome() + "\n" +
-                "password: " + utilizadorSessao.getPassword());
+                "nome: " + sessao.getNome() + "\n" +
+                "password: " + sessao.getPassword());
         menuInicial();
     }
 
@@ -70,14 +70,13 @@ public class Texto extends SistemaDeUtilizadores {
         System.out.print("Password do Utilizador: ");
         String password = input.nextLine();
 
-        utilizadorSessao =
-                validarCredenciais(nome, password);
+        sessao = validarCredenciais(nome, password);
 
-        if (utilizadorSessao == null) {
+        if (sessao == null) {
             System.out.println("credenciais invalidas.");
-            utilizadorSessao =
-                    null;
+            sessao = null;
             System.out.print("Deseja Sair (s/n)? ");
+
             if (input.nextLine().equalsIgnoreCase("s")) {
                 System.exit(0);
             } else {
@@ -94,7 +93,7 @@ public class Texto extends SistemaDeUtilizadores {
     }
 
     private void sessaoAutenticada() {
-        System.out.println("--Bem-vindo " + utilizadorSessao.getNome() + "--\n");
+        System.out.println("--Bem-vindo " + sessao.getNome() + "--\n");
         System.out.println("1 - Editar conta\n2 - Caixa de mensagens\n3 - Listar utilizadores\n4 - Sair");
         System.out.print("Opção: ");
         int opcao = Integer.parseInt(input.nextLine());
@@ -151,7 +150,7 @@ public class Texto extends SistemaDeUtilizadores {
     }
 
     private void editarNomeUtilizador() {
-        System.out.print("Nome actual: " + utilizadorSessao.getNome() + "\n");
+        System.out.print("Nome actual: " + sessao.getNome() + "\n");
         System.out.print("Escreva o nome pretendido: ");
         try {
             utilizadorSessao.setNome(input.nextLine().trim());
@@ -162,13 +161,13 @@ public class Texto extends SistemaDeUtilizadores {
     }
 
     private void editarPasswordUtilizador() {
-        System.out.print("Password actual: " + utilizadorSessao.getPassword() + "\n");
+        System.out.print("Password actual: " + sessao.getPassword() + "\n");
         try {
             System.out.println("Escreva a password pretendida: ");
-            utilizadorSessao.setPassword(input.nextLine().trim());
+            sessao.setPassword(input.nextLine().trim());
             System.out.println("Repita a password pretendida: ");
 
-            if (utilizadorSessao.getPassword().equals(input.nextLine().trim()));
+            if (sessao.getPassword().equals(input.nextLine().trim()));
         } catch (Exception e) {
             editarPasswordUtilizador();
         }
@@ -220,14 +219,14 @@ public class Texto extends SistemaDeUtilizadores {
         System.out.print("Mensagem: \n  ");
         String body = input.nextLine();
 
-        enviarMensagem(utilizador, utilizadorSessao, subject, body);
+        enviarMensagem(utilizador, sessao, subject, body);
         menuCaixaDeMensagens();
 
     }
 
     private void verMensagens() {
         System.out.println("    CAIXA DE MENSAGENS\n");
-        System.out.println(utilizadorSessao.getCaixaDeMensagens());
+        System.out.println(sessao.getCaixaDeMensagens());
     }
 
     public void listarUtilizadores() {
@@ -235,4 +234,6 @@ public class Texto extends SistemaDeUtilizadores {
         sessaoAutenticada();
 
     }
+
+ */
 }

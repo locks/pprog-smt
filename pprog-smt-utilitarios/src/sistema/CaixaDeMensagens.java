@@ -1,8 +1,9 @@
 package sistema;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-public class CaixaDeMensagens {
+public class CaixaDeMensagens implements Serializable {
 
     Vector<Mensagem> mensagens;
 

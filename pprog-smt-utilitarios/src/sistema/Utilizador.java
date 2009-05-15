@@ -1,9 +1,10 @@
 package sistema;
 
 import excepcoes.ValorInvalido;
+import java.io.Serializable;
 import org.apache.commons.lang.RandomStringUtils;
 
-public class Utilizador {
+public class Utilizador implements Serializable {
 
     private int    identificador;
     private String nome, password;
@@ -28,7 +29,8 @@ public class Utilizador {
     }
 
     public void setPassword() {
-        this.password = RandomStringUtils.randomAlphanumeric(4);
+        this.password = "MERDA";
+                //RandomStringUtils.randomAlphanumeric(4);
     }
 
     public void setPassword(String password) throws ValorInvalido {
@@ -59,6 +61,11 @@ public class Utilizador {
             return true;
 
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return getNome();
     }
 
 }

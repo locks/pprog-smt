@@ -1,23 +1,15 @@
 package sistema;
 
+import java.io.*;
 import java.util.Vector;
 
-public class SistemaDeUtilizadores {
+public class SistemaDeUtilizadores implements Serializable {
 
-    private Vector<Utilizador> utilizadores;
+    private Vector<Utilizador> utilizadores = null;
 
-    public SistemaDeUtilizadores() {
+    public SistemaDeUtilizadores() throws Exception {
         utilizadores = new Vector<Utilizador>();
-
-//        conta de teste
-        criarConta("ricardo");
-//        criarConta("joao");
-//        criarConta("alberto");
-//        System.out.println(utilizadores.lastElement().getPassword());
-    }
-
-    public static void inicializar(SistemaDeUtilizadores sistema) {
-        sistema = new SistemaDeUtilizadores();
+        carregarSistema();
     }
 
     public Utilizador criarConta(String nome) {
@@ -27,6 +19,7 @@ public class SistemaDeUtilizadores {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
         return null;
     }
 
@@ -56,16 +49,19 @@ public class SistemaDeUtilizadores {
 
     @Override
     public String toString() {
-        String listagem_formatada="-Lista dos Utilizadores-\n";
-        int indice=1;
-        
-        for (Utilizador utilizador : utilizadores) {
-            listagem_formatada = listagem_formatada + indice + ": " + utilizador.getNome() + "\n";
-            indice++;
-        }
+        String listagem = "";
 
-        System.out.println(listagem_formatada);
-        return listagem_formatada;
+        for ( int i=0; i < utilizadores.size() - 1; i++)
+            listagem += utilizadores.elementAt(i) + "\n";
+
+        listagem += utilizadores.lastElement();
+        
+//        for (Utilizador utilizador : utilizadores) {
+//            listagem += utilizador.equals( utilizadores.firstElement() ) ?
+//                "" + utilizador.toString() : "\n" + utilizador.toString() ;
+//        }
+
+        return listagem;
     }
 
     public void enviarMensagem(Utilizador to, Utilizador from, String subject, String body) {
@@ -73,5 +69,13 @@ public class SistemaDeUtilizadores {
             if (utilizador.equals(to))
                 utilizador.mensagens.adicionarMensagem(from.getIdentificador(), subject, body);
     }
-    
+
+    public void carregarSistema() throws Exception {
+        utilizadores = (Vector) new ObjectInputStream( new FileInputStream("bd.dat") ).readObject();
+    }
+
+    public void descarregarSistema() throws Exception {
+        new ObjectOutputStream( new FileOutputStream("bd.dat") ).writeObject( utilizadores );
+    }
+
 }
