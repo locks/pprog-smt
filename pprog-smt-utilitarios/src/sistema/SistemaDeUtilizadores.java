@@ -87,13 +87,9 @@ public class SistemaDeUtilizadores implements Serializable {
     }
     
     public void descarregarSistema() throws Exception {
-        System.out.println("--des-antes");
-
         ObjectOutputStream ficheiro = new ObjectOutputStream( new FileOutputStream(bd) );
         ficheiro.writeObject( utilizadores );
         ficheiro.close();
-
-        System.out.println("--des-depois");
     }
 
 }

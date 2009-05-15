@@ -11,6 +11,10 @@ public class Main {
         try {
             sistema = new SistemaDeUtilizadores();
 
+            try {
+                sistema.descarregarSistema();
+            } catch ( Exception e ) { System.err.println("Descarregar sistema: " + e); }
+
             System.out.println( sistema.criarConta("et") );
             
             System.out.println( "caixa do tiago:\n" + sistema.getcaixa("tiaguinhonhonho") );
