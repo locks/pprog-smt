@@ -11,7 +11,7 @@ public class CaixaDeMensagens implements Serializable {
         mensagens = new Vector<Mensagem>();
     }
 
-    public void adicionarMensagem(int de, String assunto, String corpo) {
+    public void adicionarMensagem(String de, String assunto, String corpo) {
         mensagens.add(new Mensagem(de, assunto, corpo));
     }
 

@@ -4,10 +4,9 @@ import java.io.Serializable;
 
 public class Mensagem implements Serializable {
 
-    private int    remetente;
-    private String assunto, corpo;
+    private String remetente, assunto, corpo;
 
-    public Mensagem(int de, String assunto, String corpo) {
+    public Mensagem(String de, String assunto, String corpo) {
         this.remetente = de;
         this.assunto   = assunto;
         this.corpo     = corpo;

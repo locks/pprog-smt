@@ -6,20 +6,15 @@ import org.apache.commons.lang.RandomStringUtils;
 
 public class Utilizador implements Serializable {
 
-    private int    identificador;
-    private String nome, password;
+    private   String nome, password;
     protected CaixaDeMensagens mensagens;
 
     public Utilizador(String nome) throws ValorInvalido {
-        setIdentificador();
         setNome(nome);
         setPassword();
         mensagens = new CaixaDeMensagens();
     }
 
-    public void setIdentificador() {
-        //TODO
-    }
     
     public void setNome(String nome) throws ValorInvalido {
         if (nome.length()==0)
@@ -30,7 +25,7 @@ public class Utilizador implements Serializable {
 
     public void setPassword() {
         this.password = "MERDA";
-                //RandomStringUtils.randomAlphanumeric(4);
+//        RandomStringUtils.randomAlphanumeric(4);
     }
 
     public void setPassword(String password) throws ValorInvalido {
@@ -40,11 +35,7 @@ public class Utilizador implements Serializable {
             this.password = password;
     }
 
-    public int getIdentificador() {
-        return identificador;
-    }
-
-     public String getNome() {
+    public String getNome() {
         return nome;
     }
 
@@ -57,15 +48,13 @@ public class Utilizador implements Serializable {
     }
 
     public boolean equals(String nome, String password) {
-        if (nome.equals(this.nome) && password.equals(this.password))
-            return true;
-
-        return false;
+        return getNome().equals(nome) && getPassword().equals(password) ?
+            true : false;
     }
 
     @Override
     public String toString() {
-        return getNome();
+        return nome;
     }
 
 }
