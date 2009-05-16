@@ -8,10 +8,13 @@ public class SistemaDeUtilizadores implements Serializable {
     private static final String bd = "bd.dat";
     private Vector<Utilizador> utilizadores = null;
 
-    public SistemaDeUtilizadores() {
-        utilizadores = carregarSistema();
+    private SistemaDeUtilizadores() {
+        utilizadores = new Vector<Utilizador>();
     }
-
+    private SistemaDeUtilizadores(Vector<Utilizador> utilizadores) {
+        this.utilizadores = utilizadores;
+    }
+  
     public String criarConta(String nome) {
         System.out.println("criar conta: ");
         
@@ -39,8 +42,10 @@ public class SistemaDeUtilizadores implements Serializable {
         return false;
     }
 
-    public boolean validarCredenciais(String nome, String password) throws Exception {
-        return utilizadores.contains( new Utilizador(nome, password) ) ?
+    public boolean validarCredenciais(String nome, String password) {
+//        return utilizadores.contains( new Utilizador(nome, password) ) ?
+//            true : false;
+        return (nome.equals("teste")&&password.equals("teste")) ?
             true : false;
     }
 
@@ -71,25 +76,34 @@ public class SistemaDeUtilizadores implements Serializable {
         return "";
     }
 
-    public Vector<Utilizador> carregarSistema() {
-        if ( !new File(bd).exists() ) {
+    public static SistemaDeUtilizadores carregarSistema() {
+        File ficheiro = new File(bd);
+        
+        if ( !ficheiro.exists() ) {
             System.err.println("Base de dados inexistente.");
-            return new Vector<Utilizador>();
+            return new SistemaDeUtilizadores();
         }
 
+        System.out.println("hm");
+        
         try {
-            return (Vector<Utilizador>) new ObjectInputStream( new FileInputStream(bd) ).readObject();
+            return new SistemaDeUtilizadores(
+                    (Vector<Utilizador>) new ObjectInputStream( new FileInputStream(bd) ).readObject()
+            );
         } catch ( Exception e ) {
             System.err.println("Erro: " + e);
-            new File(bd).delete();
-            return new Vector<Utilizador>();
+            ficheiro.delete();
+            return new SistemaDeUtilizadores();
         }
     }
     
-    public void descarregarSistema() throws Exception {
-        ObjectOutputStream ficheiro = new ObjectOutputStream( new FileOutputStream(bd) );
-        ficheiro.writeObject( utilizadores );
-        ficheiro.close();
+    public void descarregarSistema() {
+        ObjectOutputStream ficheiro = null;
+        
+       try {
+            ficheiro.writeObject( new FileOutputStream(bd) );
+            ficheiro.close();
+        } catch ( Exception e ) { System.err.println("Escrita não é possível: " + e); }
     }
 
 }
