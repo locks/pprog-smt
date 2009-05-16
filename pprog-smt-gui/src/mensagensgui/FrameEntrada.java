@@ -1,8 +1,10 @@
+
 package mensagensgui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
 
 class FrameEntrada extends JFrame {
 
@@ -12,7 +14,7 @@ class FrameEntrada extends JFrame {
     private String nome;
     private String pass;
     
-    public FrameEntrada(FrameMensagens aThis, String titulo) {
+    public FrameEntrada(FrameInicial aThis, String titulo) {
         
         super( titulo);   // Invocação do construtor da superclasse JDialog
         this.setResizable(false);
@@ -49,49 +51,33 @@ class FrameEntrada extends JFrame {
         botao.addActionListener(new TrataEvento());
         p1.add(botao);
         
-        JPanel p2 = new JPanel(new BorderLayout());
+        JPanel p2 = new JPanel();
         p2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));  //Definição de uma àrea vazia à volta do painel
         DefaultListModel listModel = new DefaultListModel();    // Criação de uma ListBox
         JList list = new JList(listModel);  // Criação de uma ListBox
         
-//        for (int i = 0; i < trabsList.size(); i++) {
-//           TODO COLOCAR Assunto das mensagens 
-//        }
-        
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //Definir que apenas um item da ListBox pode ser seleccionado de cada vez
         JScrollPane scroll = new JScrollPane(list);     //Criação de uma barra de deslocamento vertical para a ListBox
-        p2.add(scroll, BorderLayout.WEST);
-        c.add(p2, BorderLayout.WEST);
-            
-        JPanel p3 = new JPanel(new BorderLayout());
-        p3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));  //Definição de uma àrea vazia à volta do painel
+        p2.add(scroll);
         
         DefaultListModel listModel1 = new DefaultListModel();    // Criação de uma ListBox
         JList list1 = new JList(listModel1);  // Criação de uma ListBox
         
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //Definir que apenas um item da ListBox pode ser seleccionado de cada vez
         JScrollPane scroll1 = new JScrollPane(list1);     //Criação de uma barra de deslocamento vertical para a ListBox
-        p3.add(scroll1, BorderLayout.EAST);
-
-        
-//        JTextPane p31 = new JTextPane();
-        
-//        txtLista = new JScrollPane(p31);
-//        txtLista.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-//        txtLista.setPreferredSize(new Dimension(255, 280));
-//        p3.add (txtLista);
-//        p3.add(txtLista,BorderLayout.NORTH);
-        
-        JPanel p32 = new JPanel();
+        p2.add(scroll1);
+        c.add(p2, BorderLayout.CENTER);
+       
+        JPanel p3 = new JPanel();
         p3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));  //Definição de uma àrea vazia à volta do painel
         botao = new JButton("Apagar Mensagem");
         botao.addActionListener(new TrataEvento());
         p3.add(botao);
-        p3.add(p32,BorderLayout.SOUTH);
+        c.add(p3,BorderLayout.SOUTH);
         
         c.add(p1,BorderLayout.NORTH);
         c.add(p2,BorderLayout.WEST);
-        c.add(p3,BorderLayout.EAST);
+
         
         menuBar = new JMenuBar();   // Criação de uma barra de menus
         
@@ -104,7 +90,7 @@ class FrameEntrada extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 
                 FrameEntrada.this.setVisible(false);
-                FrameMensagens ecraMensagens = new FrameMensagens("Sistema de Caixa de Mensagens");
+                FrameInicial ecraMensagens = new FrameInicial("Sistema de Caixa de Mensagens");
                                
             }
         });
@@ -201,7 +187,7 @@ class FrameEntrada extends JFrame {
             }
             if (e.getActionCommand().equals("Logout")) {   // Caso o evento tenha ocorrido sobre o botão de comando Logout
                 FrameEntrada.this.setVisible(false);
-                FrameMensagens ecraMensagens = new FrameMensagens("Sistema de Caixa de Mensagens");
+                FrameInicial ecraMensagens = new FrameInicial("Sistema de Caixa de Mensagens");
             }
             if (e.getActionCommand().equals("Limpar Caixa")) {   // Caso o evento tenha ocorrido sobre o botão de comando Limpar Caixa
                 Object[] opSimNao = {"Sim", "Não"}; // Criação de um vector com os botões de opção para a caixa de diálogo

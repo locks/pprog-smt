@@ -1,9 +1,10 @@
+
+
 package mensagensgui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.JLabel;
 
 public class DialogCriaConta extends JDialog {
 
@@ -22,13 +23,15 @@ public class DialogCriaConta extends JDialog {
         
         Container c = getContentPane();
        
+        JLabel label;
         JButton botao;
         
-        JPanel p1 = new JPanel( new GridLayout(2, 1) );
-        p1.setBorder(BorderFactory.createEmptyBorder(40, 10, 10, 10));  //Definição de uma àrea vazia à volta do painel
+        JPanel p1 = new JPanel();
+        p1.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));  //Definição de uma àrea vazia à volta do painel
         
         JPanel p11 = new JPanel();
-        p11.add( new JLabel("Nome de Utilizador: "));
+        label = new JLabel("Nome de Utilizador:  ");
+        p11.add(label);
         txtUtilizador = new JTextField(10);
         p11.add(txtUtilizador);
         p1.add(p11);
@@ -36,13 +39,12 @@ public class DialogCriaConta extends JDialog {
 
         JPanel p2 = new JPanel();
         p2.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
-        botao = new JButton();
-        getRootPane().setDefaultButton( botao );  // Definir o botão de OK como estando predefinido - Caso o utilizador pressione ENTER, o botão é executedo
+        botao = new JButton("Criar Conta");
+        getRootPane().setDefaultButton(botao);  // Definir o botão de OK como estando predefinido - Caso o utilizador pressione ENTER, o botão é executedo
         botao.addActionListener(new TrataEvento());
         p2.add(botao);
 
         botao = new JButton("Cancelar");
-        new JButton( "cancelar" ).addActionListener( new TrataEvento() );
         botao.addActionListener(new TrataEvento());
         p2.add(botao);
         c.add(p2, BorderLayout.SOUTH);
@@ -69,7 +71,7 @@ public class DialogCriaConta extends JDialog {
 //
             } else {    // Caso o evento tenha ocorrido sobre o botão de comando Cancelar
                 setVisible(false);  // Esconde a caixa de diálogo
-            }
+        }
         }
         
     }  

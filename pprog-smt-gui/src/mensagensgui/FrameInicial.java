@@ -3,20 +3,28 @@ package mensagensgui;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import sistema.*;
 
-public class FrameMensagens extends JFrame{
+public class FrameInicial extends JFrame{
     
     private JTextField txtUtilizador;
     private JTextField txtPass;
+    private SistemaDeUtilizadores sistema = null;
     
-    public FrameMensagens(String titulo) {
+//    JPanel p14;
+    
+    public FrameInicial(String titulo){
         super(titulo);
+        setResizable(false);
         setSize(300,200);   // Definição das dimensões iniciais da Janela/Frame
         setMinimumSize(new Dimension(300,200));     // Definição das dimensões mínimas da Janela/Frame
         setLocation(200,200);   // Definição do posicionamento inicial da Janela/Frame
         setVisible(true);
-        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        sistema = SistemaDeUtilizadores.carregarSistema();
+        sistema.criarConta("joao");
+        System.out.println( sistema );
         
         JMenuBar menuBar;   // Definição de uma barra de menus
         JMenu menu;     // Definição de um menu
@@ -38,7 +46,8 @@ public class FrameMensagens extends JFrame{
         p1.add(p11);
         
         JPanel p12 = new JPanel();
-        p12.add( new JLabel("Password: ") );
+        label = new JLabel("Password:");
+        p12.add(label);
         txtPass = new JPasswordField(15);
         p12.add(txtPass);
         p1.add(p12);
@@ -76,7 +85,7 @@ public class FrameMensagens extends JFrame{
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));  //Definição de uma outra tecla de tecla para o item de menu (CTRL + P)
         menuItem.addActionListener( new ActionListener() {      // Manipulação do evento, isto é, acções a executar em resposta ao evento de clique ou selecção do item de menu
             public void actionPerformed(ActionEvent e) {
-                DialogCriaConta ecraCriarConta = new DialogCriaConta(FrameMensagens.this, "Criação de uma nova Conta");
+                DialogCriaConta ecraCriarConta = new DialogCriaConta(FrameInicial.this, "Criação de uma nova Conta");
                 ecraCriarConta.showDialog();     // Invocação do método showDialog para tornar visível a caixa de diálogo
             }
         });
@@ -86,35 +95,35 @@ public class FrameMensagens extends JFrame{
         menuItem.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Object[] opSimNao = {"Sim", "Não"}; // Criação de um vector com os botões de opção para a caixa de diálogo
-                if (JOptionPane.showOptionDialog( FrameMensagens.this, "Deseja fechar a aplicação?", "Sistema de Mensagens", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opSimNao, opSimNao[1] )  ==  0 ) // Criar uma caixa de diálogo do tipo interrogativa com os botões de opção definidos pelo utilizador, em que o segundo desses botões se encontra pré-seleccionado (corresponde ao indíce um do vector) e verificar se o primeiro desses botões foi o seleccionado (corresponde ao índice zero do vector)
+                if (JOptionPane.showOptionDialog( FrameInicial.this, "Deseja fechar a aplicação?", "Sistema de Mensagens", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opSimNao, opSimNao[1]  )  ==  0 ) // Criar uma caixa de diálogo do tipo interrogativa com os botões de opção definidos pelo utilizador, em que o segundo desses botões se encontra pré-seleccionado (corresponde ao indíce um do vector) e verificar se o primeiro desses botões foi o seleccionado (corresponde ao índice zero do vector)
                     dispose();    // Fecha a janela/Frame
             }
         });
         menu.add(menuItem);
         
         setJMenuBar(menuBar); // Acrescentar a barra de menus à Janela/Frame
-        
     }
     
     class TrataEvento implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {            
-//          if (e.getActionCommand().equals("Login")) {   // Caso o evento tenha ocorrido sobre o botão de comando Criar Conta
-//          TODO
-//              Se o Login for valido login = login de resgisto entao
-//                  FrameEntrada ecraEntrada = new FrameEntrada(FrameMensagens.this, "Caixa de Entrada");
-//                  FrameMensagens.this.setVisible(false);
-//                  ecraEntrada.showDialog();     // Invocação do método showDialog para tornar visível a caixa de diálogo
-//              Senao
-//                JOptionPane.showMessageDialog(frame,"Login Incorrecto.\n Introduza Novamente os Dados","Login Incorrecto",JOptionPane.WARNING_MESSAGE);
-//
-//          }
-            FrameEntrada ecraEntrada = new FrameEntrada(FrameMensagens.this, "Caixa de Entrada");
-            FrameMensagens.this.setVisible(false);
-            ecraEntrada.showDialog();     // Invocação do método showDialog para tornar visível a caixa de diálogo                          
+          if (e.getActionCommand().equals("Login")) {   // Caso o evento tenha ocorrido sobre o botão de comando Criar Conta
+          System.out.println( txtUtilizador.getText() + txtPass.getText() );
+          
+            if ( sistema.validarCredenciais(txtUtilizador.getText().trim() , txtPass.getText().trim()) ) {
+                System.out.println("dentro do if");
+                FrameEntrada ecraEntrada = new FrameEntrada(FrameInicial.this, "Caixa de Entrada");
+                FrameInicial.this.setVisible(false);
+                ecraEntrada.showDialog();     // Invocação do método showDialog para tornar visível a caixa de diálogo
+            } else
+                JOptionPane.showMessageDialog(null,
+                        "Login Incorrecto.\nIntroduza Novamente os Dados",
+                        "Login Incorrecto",
+                        JOptionPane.WARNING_MESSAGE);
+          }
+        }
+        
     }
-
-}
     
 }
     
