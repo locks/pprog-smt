@@ -6,20 +6,14 @@ public class Main {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        SistemaDeUtilizadores sistema = null;
-
+        SistemaDeUtilizadores sistema = SistemaDeUtilizadores.carregarSistema();
         try {
-            sistema = new SistemaDeUtilizadores();
-
-            try {
                 sistema.descarregarSistema();
             } catch ( Exception e ) { System.err.println("Descarregar sistema: " + e); }
 
             System.out.println( sistema.criarConta("et") );
             
             System.out.println( "caixa do tiago:\n" + sistema.getcaixa("tiaguinhonhonho") );
-
-        } catch ( Exception e ) { System.err.println("Falha na inicialização do sistema: " + e); System.exit(-1); }
 
         System.out.println( "--sistema\n" + sistema.toString() + "\n--sistema" );
         

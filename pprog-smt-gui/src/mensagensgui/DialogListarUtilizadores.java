@@ -1,35 +1,35 @@
-
 package mensagensgui;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import sistema.SistemaDeUtilizadores;
 
 class DialogListarUtilizadores extends JDialog {
 
-    private JList listUsers;
+    public static JScrollPane lista(SistemaDeUtilizadores sistema) {
+        JList listaTEMP = new JList();
+        listaTEMP.setListData( sistema.listaDeUtilizadores() );
+        listaTEMP.setSelectionMode( ListSelectionModel.SINGLE_SELECTION);
+
+        return new JScrollPane( listaTEMP );
+    }
     
-    public DialogListarUtilizadores(FrameEntrada orig, String titulo) {
-        
-        super(orig, titulo, true);   // Invocação do construtor da superclasse JDialog
-        this.setLocation(orig.getX() + 100, orig.getY() + 100);   //Definição do posicionamento inicial da caixa de diálogo
+    public DialogListarUtilizadores(FrameEntrada origem, String titulo, SistemaDeUtilizadores sistema) {
+        super(origem, titulo, true);   // Invocação do construtor da superclasse JDialog
+        setLocation(origem.getX() + 100, origem.getY() + 100);   //Definição do posicionamento inicial da caixa de diálogo
+ 
         Container c = getContentPane();
 
         JPanel p1 = new JPanel(new BorderLayout());
         p1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));  //Definição de uma àrea vazia à volta do painel
-        DefaultListModel listModel = new DefaultListModel();    // Criação de uma ListBox
-        JList list = new JList(listModel);  // Criação de uma ListBox
-        
-//        for (int i = 0; i < trabsList.size(); i++) {
-//           TODO COLOCAR USERS 
-//        }
-        
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //Definir que apenas um item da ListBox pode ser seleccionado de cada vez
-        JScrollPane scroll = new JScrollPane(list);     //Criação de uma barra de deslocamento vertical para a ListBox
-        p1.add(scroll, BorderLayout.CENTER);
+
+//        lista.setListData( sistema.listaDeUtilizadores() );
+//        lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //Definir que apenas um item da ListBox pode ser seleccionado de cada vez
+//
+//        JScrollPane scroll = new JScrollPane(lista);     //Criação de uma barra de deslocamento vertical para a ListBox
+
+        p1.add( DialogListarUtilizadores.lista(sistema), BorderLayout.CENTER);
         c.add(p1, BorderLayout.CENTER);
 
         JPanel p2 = new JPanel();
@@ -53,4 +53,5 @@ class DialogListarUtilizadores extends JDialog {
     public void showDialog() {
         setVisible(true);   // Mostra a caixa de diálogo
     }
+
 }

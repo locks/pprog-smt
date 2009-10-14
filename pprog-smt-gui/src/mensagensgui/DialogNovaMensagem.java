@@ -5,26 +5,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JDialog;
-
+import sistema.SistemaDeUtilizadores;
 
 class DialogNovaMensagem extends JDialog{
     
-    private JTextField txtPara;
-    private JTextField txtAssunto;
-    private JTextPane txtLista;
-    JScrollPane scrollTexto;
+    private JTextField  txtPara;
+    private JTextField  txtAssunto;
+    private JTextPane   txtLista;
+    private JScrollPane scrollTexto;
+    private JScrollPane listaUtilizadores = null;
 
-   public DialogNovaMensagem(FrameEntrada orig, String titulo) {
+   public DialogNovaMensagem(FrameEntrada orig, String titulo, SistemaDeUtilizadores sistema) {
         super(orig,titulo);
-        this.setLocation(orig.getX() + 100, orig.getY() + 100);   //Definição do posicionamento inicial da caixa de diálogo
-        this.setResizable(true);
-        
-        
-        JMenuBar menuBar;   // Definição de uma barra de menus
-        JMenu menu;     // Definição de um menu
-        JMenuItem menuItem;     // Definição de um item de menu
-        
+        setLocation(orig.getX() + 100, orig.getY() + 100);   //Definição do posicionamento inicial da caixa de diálogo
+        setResizable(true);
+
         Container c = getContentPane();
+        listaUtilizadores = DialogListarUtilizadores.lista( sistema );
 
         JLabel label;
         JButton botao;
@@ -37,19 +34,14 @@ class DialogNovaMensagem extends JDialog{
         p11.add(label);
         txtPara = new JTextField(10);
         p11.add(txtPara);
-        
-        DefaultListModel listModel = new DefaultListModel();    // Criação de uma ListBox
-        JList list = new JList(listModel);  // Criação de uma ListBox
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //Definir que apenas um item da ListBox pode ser seleccionado de cada vez
-        JScrollPane scroll = new JScrollPane(list);     //Criação de uma barra de deslocamento vertical para a ListBox
-        p11.add(scroll);
-        
+
+        // adiciona scrollpane com... a lista de utilizadores
+//        p11.add( listaUtilizadores );
         
         botao = new JButton("Enviar Para Todos");
         getRootPane().setDefaultButton(botao);  // Definir o botão de OK como estando predefinido - Caso o utilizador pressione ENTER, o botão é executedo
         botao.addActionListener(new TrataEvento());
         p11.add(botao);
-        
         p1.add(p11,BorderLayout.NORTH);
         
         JPanel p2 = new JPanel();
@@ -82,9 +74,6 @@ class DialogNovaMensagem extends JDialog{
         botao.addActionListener(new TrataEvento());
         p3.add(botao);
         c.add(p3, BorderLayout.SOUTH);
-        
-        
-        
         c.add(p1,BorderLayout.NORTH);
         c.add(p2,BorderLayout.CENTER);
         c.add(p3, BorderLayout.SOUTH);
@@ -102,7 +91,7 @@ class DialogNovaMensagem extends JDialog{
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("Enviar")) {   // Caso o evento tenha ocorrido sobre o botão de comando Enviar
             
-            }else{   
+            } else {
 //               
 //          TODO
 //              Enviar Mensagem

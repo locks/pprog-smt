@@ -14,14 +14,9 @@ public class Utilizador implements Serializable {
         mensagens = new CaixaDeMensagens();
     }
 
-    public Utilizador(String nome, String password) {
-        this.nome     = nome;
-        this.password = password;
-        mensagens = null;
-    }
-
     public void setPassword() {
         this.password = RandomStringUtils.randomAlphanumeric(4);
+        System.out.println("pass criada: " + password);
     }
 
     public void setPassword(String password) {
@@ -40,13 +35,17 @@ public class Utilizador implements Serializable {
         return mensagens.toString();
     }
 
+    public void emptycaixaDeMensagens() {
+        mensagens = new CaixaDeMensagens();
+    }
+    
     public boolean equals(String nome) {
         return getNome().equals(nome) ?
             true : false;
     }
-
+ 
     public boolean equals(String nome, String password) {
-        return equals(nome) && getPassword().equals(password) ?
+        return (equals(nome) && getPassword().equals(password)) ?
             true : false;
     }
 

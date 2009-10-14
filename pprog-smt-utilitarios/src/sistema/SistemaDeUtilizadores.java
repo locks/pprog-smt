@@ -6,23 +6,27 @@ import java.util.Vector;
 public class SistemaDeUtilizadores implements Serializable {
 
     private static final String bd = "bd.dat";
-    private Vector<Utilizador> utilizadores = null;
+    private static Vector<Utilizador> utilizadores = null;
 
     private SistemaDeUtilizadores() {
         utilizadores = new Vector<Utilizador>();
     }
+    
     private SistemaDeUtilizadores(Vector<Utilizador> utilizadores) {
-        this.utilizadores = utilizadores;
+        SistemaDeUtilizadores.utilizadores = utilizadores;
     }
-  
+
+    public void apagarMensagens(String nome) {
+        for ( Utilizador utilizador : utilizadores )
+            if ( utilizador.equals(nome) )
+                utilizador.emptycaixaDeMensagens();
+    }
+
     public String criarConta(String nome) {
-        System.out.println("criar conta: ");
-        
         if ( existeNome(nome) )
-            return "NOME NOME NOME já existente.";
+            return "";
         else {
             utilizadores.add( new Utilizador(nome) );
-            System.out.println("criado.");
             return utilizadores.lastElement().getPassword();
         }
     }
@@ -34,7 +38,7 @@ public class SistemaDeUtilizadores implements Serializable {
     public boolean existeNome(String nome) {
         System.out.print("existeNome: ");
         for ( Utilizador utilizador : utilizadores )
-            if ( utilizador.getNome().equals(nome) ) {
+            if ( utilizador.equals(nome) ) {
                 System.out.println("yep");
                 return true;
             }
@@ -43,10 +47,19 @@ public class SistemaDeUtilizadores implements Serializable {
     }
 
     public boolean validarCredenciais(String nome, String password) {
-//        return utilizadores.contains( new Utilizador(nome, password) ) ?
-//            true : false;
-        return (nome.equals("teste")&&password.equals("teste")) ?
-            true : false;
+        for ( Utilizador utilizador : utilizadores )
+            if (utilizador.equals(nome, password))
+                return true;
+
+        return false;
+    }
+
+    public void alterarPassword(String nome, String password) {
+        for ( Utilizador utilizador : utilizadores )
+            if (utilizador.equals(nome)) {
+                utilizador.setPassword(password);
+                System.out.println( "pass nova: " + utilizador.getPassword() );
+            }
     }
 
     @Override
@@ -62,10 +75,18 @@ public class SistemaDeUtilizadores implements Serializable {
         return listagem += utilizadores.lastElement().getNome();
     }
 
+    public Vector<String> listaDeUtilizadores() {
+        Vector<String> lista = new Vector<String>();
+        for ( Utilizador utilizador : utilizadores )
+            lista.add( utilizador.toString() );
+
+        return lista;
+    }
+
     public void enviarMensagem(String de, String para, String assunto, String corpo) {
         for (Utilizador utilizador : utilizadores)
-            if ( utilizador.equals(para) )
-                utilizador.mensagens.adicionarMensagem(de, assunto, corpo);
+            if ( utilizador.equals(para) ) { System.out.println("FODA-SE"); }
+//                utilizador.mensagens.adicionarMensagem(de, assunto, corpo);
     }
 
     public String getcaixa(String nome) {
@@ -96,13 +117,14 @@ public class SistemaDeUtilizadores implements Serializable {
             return new SistemaDeUtilizadores();
         }
     }
+
+    public static SistemaDeUtilizadores carregarSistema(SistemaDeUtilizadores sistema) {
+        return sistema;
+    }
     
     public void descarregarSistema() {
-        ObjectOutputStream ficheiro = null;
-        
        try {
-            ficheiro.writeObject( new FileOutputStream(bd) );
-            ficheiro.close();
+            new ObjectOutputStream( new FileOutputStream(bd) ).writeObject( utilizadores );
         } catch ( Exception e ) { System.err.println("Escrita não é possível: " + e); }
     }
 
