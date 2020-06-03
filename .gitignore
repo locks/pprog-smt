@@ -1,1 +1,6 @@
 *.DS_Store
+/pprog-smt-utilitarios/build/
+/pprog-smt-gui/build/
+/pprog-smt-utilitarios/dist/
+/pprog-smt-cli/build/
+/pprog-smt-gui/dist/

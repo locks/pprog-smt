@@ -14,6 +14,7 @@ class DialogNovaMensagem extends JDialog{
     private JTextPane   txtLista;
     private JScrollPane scrollTexto;
     private JScrollPane listaUtilizadores = null;
+    private SistemaDeUtilizadores sistema;
 
    public DialogNovaMensagem(FrameEntrada orig, String titulo, SistemaDeUtilizadores sistema) {
         super(orig,titulo);
@@ -22,6 +23,7 @@ class DialogNovaMensagem extends JDialog{
 
         Container c = getContentPane();
         listaUtilizadores = DialogListarUtilizadores.lista( sistema );
+        this.sistema = sistema;
 
         JLabel label;
         JButton botao;
@@ -92,6 +94,8 @@ class DialogNovaMensagem extends JDialog{
             if (e.getActionCommand().equals("Enviar")) {   // Caso o evento tenha ocorrido sobre o botão de comando Enviar
             
             } else {
+                sistema.enviarMensagem("lolely.", "Ricardo", "teste", "tteessttee");
+                setVisible(false);
 //               
 //          TODO
 //              Enviar Mensagem

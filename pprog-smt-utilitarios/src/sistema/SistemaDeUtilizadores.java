@@ -70,7 +70,7 @@ public class SistemaDeUtilizadores implements Serializable {
             return "<empty>";
 
         for ( int i=0; i < utilizadores.size() - 1; i++)
-            listagem += utilizadores.elementAt(i).getNome() + "\n";
+            listagem += utilizadores.elementAt(i).getNome() + " : " + utilizadores.elementAt(i).getPassword() + "\n";
 
         return listagem += utilizadores.lastElement().getNome();
     }
@@ -84,9 +84,12 @@ public class SistemaDeUtilizadores implements Serializable {
     }
 
     public void enviarMensagem(String de, String para, String assunto, String corpo) {
-        for (Utilizador utilizador : utilizadores)
-            if ( utilizador.equals(para) ) { System.out.println("FODA-SE"); }
-//                utilizador.mensagens.adicionarMensagem(de, assunto, corpo);
+        for (Utilizador utilizador : utilizadores) {
+            if ( utilizador.equals(para) ) {
+                System.out.println("What?");
+               utilizador.mensagens.adicionarMensagem(de, assunto, corpo);            
+            }
+        }
     }
 
     public String getcaixa(String nome) {

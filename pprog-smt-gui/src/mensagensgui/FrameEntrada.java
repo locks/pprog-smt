@@ -11,7 +11,8 @@ public class FrameEntrada extends JFrame {
     private String nome = null;
     private SistemaDeUtilizadores sistema = null;
 
-    public void criarMenuBar() {
+    public void criarMenuBar(final SistemaDeUtilizadores sistema) {
+        this.sistema = sistema;
         JMenuBar  menuBar = new JMenuBar();   // Definição de uma barra de menus
         JMenu     menu;     // Definição de um menu
         JMenuItem menuItem;     // Definição de um item de menu
@@ -179,7 +180,7 @@ public class FrameEntrada extends JFrame {
         c.add(p1,BorderLayout.NORTH);
         c.add(p2,BorderLayout.WEST);
 
-        criarMenuBar();
+        criarMenuBar(sistemaRecebido);
 
         pack();     //As dimensões da janela são ajustadas automaticamente ao mínimo necessário que permite mostrar todos os seus componentes
         setMinimumSize(new Dimension(getWidth(), getHeight()));     // Definir como dimensões mínimas da Janela/Frame a actual largura e altura

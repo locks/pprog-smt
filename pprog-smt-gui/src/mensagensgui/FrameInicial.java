@@ -80,7 +80,7 @@ public class FrameInicial extends JFrame{
         
         sistema = SistemaDeUtilizadores.carregarSistema();
         sistema.descarregarSistema();
-        System.out.println( "sistema: " + sistema );
+        System.out.println( "sistema: \n" + sistema );
         
         Container c = getContentPane();
 
